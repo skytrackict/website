@@ -68,7 +68,7 @@ export function EnrollModal({ item, onClose }: { item: Sellable; onClose: () => 
             phone,
             itemId: item.id,
             itemName: item.name,
-            amountKobo: Math.round(item.amount * 100),
+            amount: item.amount,
             reference: successRef,
             status: 'success',
             createdAt: new Date().toISOString(),

@@ -17,7 +17,7 @@ export const SITE = {
   whatsapp: '+2348141823724',
   email: 'info@skytrackict.com.ng',
   address: 'Skytrack ICT Hub, Abeokuta, Ogun State, Nigeria',
-  hours: 'Mon - Sat, 8:00am - 6:00pm',
+  hours: 'Mon – Sat, 8:00am – 6:00pm',
   social: {
     twitter: 'https://twitter.com/skytrackict',
     instagram: 'https://instagram.com/skytrackict',

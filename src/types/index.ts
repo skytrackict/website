@@ -84,7 +84,7 @@ export interface EnrollmentRecord {
   phone: string;
   itemId: string;
   itemName: string;
-  amountKobo: number;
+  amount: number;
   reference: string;
   status: 'pending' | 'success' | 'failed';
   createdAt: string;
