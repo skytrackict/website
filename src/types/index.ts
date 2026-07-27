@@ -1,0 +1,101 @@
+export interface Division {
+  slug: string;
+  name: string;
+  tagline: string;
+  description: string;
+  icon: string;
+  path: string;
+  highlights: string[];
+}
+
+export interface Course {
+  id: string;
+  category: 'exam-prep' | 'ict-skills';
+  name: string;
+  summary: string;
+  duration: string;
+  priceMin: number;
+  priceMax: number;
+  format: string;
+  outcomes: string[];
+  featured?: boolean;
+}
+
+export interface WorkspacePlan {
+  id: string;
+  group: 'coworking' | 'private-office' | 'conference';
+  name: string;
+  capacity?: string;
+  price: string;
+  period: string;
+  note?: string;
+}
+
+export interface BusinessService {
+  id: string;
+  name: string;
+  summary: string;
+  priceMin: number;
+  priceMax: number;
+  period?: string;
+  deliverables: string[];
+}
+
+export interface TestingService {
+  id: string;
+  name: string;
+  summary: string;
+  priceMin: number;
+  priceMax: number;
+  period: string;
+}
+
+export interface TeamMember {
+  id: string;
+  name: string;
+  role: string;
+  bio: string;
+  initials: string;
+}
+
+export interface Testimonial {
+  id: string;
+  quote: string;
+  name: string;
+  role: string;
+}
+
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+export interface Sellable {
+  id: string;
+  kind: 'course' | 'workspace' | 'business-service' | 'testing-service';
+  name: string;
+  amount: number;
+  description: string;
+}
+
+export interface EnrollmentRecord {
+  fullName: string;
+  email: string;
+  phone: string;
+  itemId: string;
+  itemName: string;
+  amountKobo: number;
+  reference: string;
+  status: 'pending' | 'success' | 'failed';
+  createdAt: string;
+  notes?: string;
+}
+
+export interface ContactMessageRecord {
+  fullName: string;
+  email: string;
+  phone?: string;
+  subject: string;
+  message: string;
+  createdAt: string;
+}

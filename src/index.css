@@ -1,0 +1,117 @@
+@import 'tailwindcss';
+
+@theme {
+  /* Colour system — "radar" palette: deep ink navy, signal blue, radar-blip amber */
+  --color-ink: #0a1628;
+  --color-ink-2: #101f38;
+  --color-navy: #16294a;
+  --color-signal: #2e6bff;
+  --color-signal-light: #6b93ff;
+  --color-amber: #ffb020;
+  --color-amber-dark: #e0930a;
+  --color-mist: #f6f8fb;
+  --color-mist-2: #eef1f7;
+  --color-line: #e2e7f0;
+  --color-slate: #5b6779;
+  --color-success: #16a34a;
+
+  --font-display: 'Sora', 'Segoe UI', sans-serif;
+  --font-body: 'Inter', 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --shadow-card: 0 1px 2px rgba(10, 22, 40, 0.06), 0 8px 24px -8px rgba(10, 22, 40, 0.12);
+  --shadow-card-hover: 0 4px 12px rgba(10, 22, 40, 0.08), 0 16px 40px -12px rgba(10, 22, 40, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-ink);
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: var(--color-amber);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-amber);
+  outline-offset: 2px;
+}
+
+/* Signature: radar sweep — a slow rotating conic-gradient wedge used behind
+   the hero and as an ambient motif. Respects prefers-reduced-motion. */
+@keyframes radar-sweep {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.radar-sweep {
+  animation: radar-sweep 8s linear infinite;
+}
+
+@keyframes radar-ping {
+  0% { transform: scale(0.6); opacity: 0.9; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+.radar-ping {
+  animation: radar-ping 2.4s cubic-bezier(0.2, 0.6, 0.4, 1) infinite;
+}
+
+@keyframes scan-line {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.scan-line {
+  animation: scan-line 2.6s ease-in-out infinite;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up {
+  animation: fade-up 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .radar-sweep, .radar-ping, .scan-line, .fade-up {
+    animation: none !important;
+  }
+}
+
+.container-page {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .container-page {
+    padding-inline: 2.5rem;
+  }
+}
