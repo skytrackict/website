@@ -152,6 +152,92 @@ export const SPECIALIST_SERVICES: Division[] = [
   },
 ];
 
+function examPackages(min: number, max: number): import('../types').CoursePackage[] {
+  const mid = Math.round((min + max) / 2 / 500) * 500;
+  return [
+    {
+      id: 'group',
+      name: 'Group Class',
+      price: min,
+      bestFor: 'Self-motivated learners who do well in a classroom setting',
+      features: [
+        'Weekday or weekend cohort (6–10 students)',
+        'Full syllabus coverage',
+        '2 timed mock exams with review',
+        'Shared class materials & recordings',
+      ],
+    },
+    {
+      id: 'small-group',
+      name: 'Small Group + Extra Mocks',
+      price: mid,
+      bestFor: 'Students who want more practice tests and closer feedback',
+      features: [
+        'Small group (max 4 students)',
+        'Full syllabus coverage',
+        '5 timed mock exams with score review',
+        'Weekly progress check-ins with an instructor',
+      ],
+      recommended: true,
+    },
+    {
+      id: 'one-on-one',
+      name: 'One-on-One Intensive',
+      price: max,
+      bestFor: 'Students on a tight timeline who want focused, private coaching',
+      features: [
+        '1-on-1 sessions with a dedicated instructor',
+        'Personalised study plan around your weak areas',
+        'Unlimited mock exams during the course',
+        'Flexible scheduling, including evenings',
+      ],
+    },
+  ];
+}
+
+function ictPackages(min: number, max: number): import('../types').CoursePackage[] {
+  const mid = Math.round((min + max) / 2 / 500) * 500;
+  return [
+    {
+      id: 'weekday',
+      name: 'Weekday Cohort',
+      price: min,
+      bestFor: 'Students and job seekers who can attend structured weekday classes',
+      features: [
+        'Weekday evening classes',
+        'Hands-on lab sessions on real datasets/tools',
+        'Class materials, templates & resources',
+        'Certificate of completion',
+      ],
+    },
+    {
+      id: 'weekend',
+      name: 'Weekend Cohort',
+      price: mid,
+      bestFor: 'Working professionals who can only attend on weekends',
+      features: [
+        'Saturday classes',
+        'Hands-on lab sessions on real datasets/tools',
+        'Class materials, templates & resources',
+        'Certificate of completion',
+      ],
+      recommended: true,
+    },
+    {
+      id: 'private',
+      name: 'Private / Corporate Training',
+      price: max,
+      bestFor: 'Teams or individuals who want a schedule and pace built around them',
+      features: [
+        '1-on-1 or dedicated team sessions',
+        'Curriculum tailored to your goals or industry',
+        'Flexible scheduling',
+        'Certificate of completion',
+      ],
+    },
+  ];
+}
+
 export const COURSES: Course[] = [
   {
     id: 'ielts',
@@ -164,6 +250,44 @@ export const COURSES: Course[] = [
     format: 'In-person or online, weekday & weekend cohorts',
     outcomes: ['Band-score focused strategy', 'Weekly mock exams', 'One-on-one speaking practice'],
     featured: true,
+    longDescription:
+      'Our IELTS Preparation course builds your confidence and accuracy across all four test components — Listening, Reading, Writing and Speaking — with a focus on the specific band score you need for study, work or migration. You will practise with authentic-format questions, receive detailed feedback on Writing Task 1 & 2, and sit weekly timed mock exams that mirror real test-day conditions.',
+    level: 'All levels',
+    prerequisite: 'None — an initial assessment places you at the right starting point',
+    tools: ['Official IELTS practice materials', 'Recorded listening exercises', 'Model answer bank'],
+    schedule: 'Weekday evenings or Saturday mornings, 4–8 weeks depending on package',
+    curriculum: [
+      {
+        title: 'Week 1: Test Format & Listening Strategy',
+        topics: ['Overview of all four components and band descriptors', 'Note-taking & prediction techniques for Listening', 'Diagnostic mock test to identify weak areas'],
+      },
+      {
+        title: 'Week 2: Reading Strategy',
+        topics: ['Skimming, scanning & time management', 'True/False/Not Given and matching-headings techniques', 'Timed reading passages with review'],
+      },
+      {
+        title: 'Week 3: Writing Task 1 & 2',
+        topics: ['Structuring a Task 1 report (charts, graphs, processes)', 'Building a Task 2 argument essay', 'Common examiner feedback and how to fix it'],
+      },
+      {
+        title: 'Week 4: Speaking & Full Mock Exams',
+        topics: ['Part 1–3 speaking structure and fluency drills', 'Pronunciation & lexical resource coaching', 'Full-length timed mock exam with band-score feedback'],
+      },
+    ],
+    whatYouLearn: [
+      'Time-efficient strategies for each of the four components',
+      'How examiners score Writing and Speaking, and how to hit higher bands',
+      'Common traps in Reading and Listening question types',
+      'How to structure a Task 2 essay under time pressure',
+      'Confident, fluent speaking across all three speaking parts',
+    ],
+    included: [
+      { icon: 'monitor', title: 'Mock Exam Access', body: 'Timed, full-length mock tests that mirror real IELTS conditions.' },
+      { icon: 'users', title: 'Speaking Practice Partner', body: 'Structured one-on-one speaking sessions with feedback.' },
+      { icon: 'award', title: 'Certificate of Completion', body: 'A certificate confirming you completed the programme.' },
+      { icon: 'clock', title: 'Flexible Scheduling', body: 'Weekday and weekend cohorts to fit your routine.' },
+    ],
+    packages: examPackages(25000, 60000),
   },
   {
     id: 'pte',
@@ -175,6 +299,29 @@ export const COURSES: Course[] = [
     priceMax: 50000,
     format: 'In-person or online',
     outcomes: ['Item-by-item scoring breakdown', 'Template-based writing drills', 'Full-length simulations'],
+    longDescription:
+      'PTE Academic is scored entirely by computer, which rewards a very specific, template-driven approach. This course walks you through each of the 20 question types, teaches scoring-aware templates for Speaking and Writing, and gives you access to full-length computer-delivered simulations so test day holds no surprises.',
+    level: 'All levels',
+    prerequisite: 'None — an initial assessment places you at the right starting point',
+    tools: ['PTE-format practice software', 'Recorded speaking samples for review'],
+    schedule: 'Weekday evenings or Saturday mornings, 3–6 weeks depending on package',
+    curriculum: [
+      { title: 'Week 1: Test Format & Speaking Templates', topics: ['Read Aloud, Repeat Sentence & Describe Image templates', 'Pronunciation and fluency scoring factors'] },
+      { title: 'Week 2: Writing & Reading', topics: ['Summarise Written Text template', 'Essay structure for scoring criteria', 'Reading: Fill in the Blanks & Reorder Paragraphs'] },
+      { title: 'Week 3: Listening & Full Simulations', topics: ['Summarise Spoken Text and dictation strategy', 'Full-length computer-delivered mock exams'] },
+    ],
+    whatYouLearn: [
+      'Scoring-aware templates for every PTE question type',
+      'How the AI scoring engine evaluates fluency and pronunciation',
+      'Time management across a 2-hour computer-delivered test',
+      'Common mistakes that cost points in each section',
+    ],
+    included: [
+      { icon: 'monitor', title: 'Computer-Delivered Simulations', body: 'Practice on software that mirrors the real PTE interface.' },
+      { icon: 'award', title: 'Certificate of Completion', body: 'A certificate confirming you completed the programme.' },
+      { icon: 'clock', title: 'Flexible Scheduling', body: 'Weekday and weekend cohorts to fit your routine.' },
+    ],
+    packages: examPackages(25000, 50000),
   },
   {
     id: 'celpip',
@@ -186,6 +333,29 @@ export const COURSES: Course[] = [
     priceMax: 50000,
     format: 'In-person or online',
     outcomes: ['CLB-aligned scoring guidance', 'Listening & reading strategy', 'Speaking booth practice'],
+    longDescription:
+      'Built for candidates applying for Canadian immigration or professional licensing, this course maps every practice task to the Canadian Language Benchmark (CLB) scale so you know exactly what score you\u2019re working toward. You will practise Listening, Reading, Writing and Speaking in the CELPIP format, with dedicated speaking-booth simulations.',
+    level: 'All levels',
+    prerequisite: 'None — an initial assessment places you at the right starting point',
+    tools: ['CELPIP-format practice materials', 'Speaking booth simulation recordings'],
+    schedule: 'Weekday evenings or Saturday mornings, 3–6 weeks depending on package',
+    curriculum: [
+      { title: 'Week 1: CLB Scale & Listening Strategy', topics: ['Understanding CLB levels and what employers/IRCC expect', 'Listening task types and note-taking strategy'] },
+      { title: 'Week 2: Reading & Writing', topics: ['Reading for information vs. viewpoints', 'Email and survey-response writing tasks'] },
+      { title: 'Week 3: Speaking & Full Mocks', topics: ['Speaking-booth simulation and timing practice', 'Full-length mock exam with CLB-level feedback'] },
+    ],
+    whatYouLearn: [
+      'How CELPIP scoring maps to the CLB scale',
+      'Strategies specific to CELPIP\u2019s task types (distinct from IELTS/TOEFL)',
+      'Confident, timed responses in a speaking-booth format',
+      'Common writing-task structures that score well',
+    ],
+    included: [
+      { icon: 'monitor', title: 'Speaking Booth Simulation', body: 'Practice recording responses under real exam timing.' },
+      { icon: 'award', title: 'Certificate of Completion', body: 'A certificate confirming you completed the programme.' },
+      { icon: 'clock', title: 'Flexible Scheduling', body: 'Weekday and weekend cohorts to fit your routine.' },
+    ],
+    packages: examPackages(25000, 50000),
   },
   {
     id: 'toefl',
@@ -197,6 +367,30 @@ export const COURSES: Course[] = [
     priceMax: 50000,
     format: 'In-person or online',
     outcomes: ['Integrated skills practice', 'Timed section drills', 'Score-report review'],
+    longDescription:
+      'TOEFL iBT tests academic English through integrated tasks that combine reading, listening, speaking and writing. This course trains you to synthesise information quickly under time pressure, with practice drills for every section and full diagnostic score-report reviews so you know precisely where to improve.',
+    level: 'All levels',
+    prerequisite: 'None — an initial assessment places you at the right starting point',
+    tools: ['TOEFL-format practice materials', 'Integrated-task templates'],
+    schedule: 'Weekday evenings or Saturday mornings, 4–6 weeks depending on package',
+    curriculum: [
+      { title: 'Week 1: Reading & Listening', topics: ['Academic passage strategy', 'Lecture and conversation note-taking'] },
+      { title: 'Week 2: Speaking (Integrated Tasks)', topics: ['Independent vs. integrated speaking tasks', 'Templates for summarising reading + listening content'] },
+      { title: 'Week 3: Writing', topics: ['Integrated writing task structure', 'Academic discussion writing task'] },
+      { title: 'Week 4: Full Mock Exams', topics: ['Full-length timed practice test', 'Score-report review and improvement plan'] },
+    ],
+    whatYouLearn: [
+      'How to synthesise reading, listening and speaking under time pressure',
+      'Templates for both independent and integrated writing tasks',
+      'Common academic vocabulary and structures TOEFL rewards',
+      'How to read and act on your official score report',
+    ],
+    included: [
+      { icon: 'monitor', title: 'Integrated-Task Practice', body: 'Drills that combine reading, listening, speaking and writing.' },
+      { icon: 'award', title: 'Certificate of Completion', body: 'A certificate confirming you completed the programme.' },
+      { icon: 'clock', title: 'Flexible Scheduling', body: 'Weekday and weekend cohorts to fit your routine.' },
+    ],
+    packages: examPackages(30000, 50000),
   },
   {
     id: 'gre',
@@ -208,6 +402,30 @@ export const COURSES: Course[] = [
     priceMax: 120000,
     format: 'In-person or online, small group',
     outcomes: ['Adaptive-test strategy', 'Formula & vocabulary drills', 'Full diagnostic tests'],
+    longDescription:
+      'The GRE is section-adaptive, meaning your performance on the first section affects the difficulty (and scoring) of the second. This course teaches you the quant formulas and vocabulary you need, section-adaptive test strategy, and gives you full diagnostic tests so you walk in on test day with a clear target score in mind.',
+    level: 'Intermediate',
+    prerequisite: 'Comfortable with high-school level mathematics',
+    tools: ['GRE-format practice software', 'Formula & vocabulary flashcard decks'],
+    schedule: 'Weekday evenings or Saturday mornings, 6–10 weeks depending on package',
+    curriculum: [
+      { title: 'Weeks 1–2: Quant Foundations', topics: ['Arithmetic, algebra & geometry review', 'Data interpretation and quantitative comparison strategy'] },
+      { title: 'Weeks 3–4: Verbal Reasoning', topics: ['Text completion & sentence equivalence strategy', 'High-yield vocabulary building', 'Reading comprehension strategy'] },
+      { title: 'Weeks 5–6: Analytical Writing', topics: ['Issue task structure', 'Argument task structure and common flaws to identify'] },
+      { title: 'Weeks 7+: Adaptive Strategy & Full Diagnostics', topics: ['How section-adaptive scoring works and how to use it', 'Full-length diagnostic exams with score review'] },
+    ],
+    whatYouLearn: [
+      'Core quant formulas across arithmetic, algebra, geometry and data analysis',
+      'High-yield GRE vocabulary and how to use it in context',
+      'How the section-adaptive format affects your strategy',
+      'How to structure both Analytical Writing tasks under time pressure',
+    ],
+    included: [
+      { icon: 'monitor', title: 'Adaptive-Format Practice', body: 'Simulations that mirror the GRE\u2019s section-adaptive scoring.' },
+      { icon: 'users', title: 'Small-Group Coaching', body: 'Focused attention in groups of 4 or fewer.' },
+      { icon: 'award', title: 'Certificate of Completion', body: 'A certificate confirming you completed the programme.' },
+    ],
+    packages: examPackages(50000, 120000),
   },
   {
     id: 'sat',
@@ -219,6 +437,29 @@ export const COURSES: Course[] = [
     priceMax: 100000,
     format: 'In-person or online',
     outcomes: ['Section-by-section pacing plans', 'Practice test analytics', 'College application timing guidance'],
+    longDescription:
+      'Our SAT Preparation course covers Math and Evidence-Based Reading & Writing with a strong focus on pacing — the most common reason students underperform relative to their ability. You will sit full practice tests, review detailed analytics on where time and points were lost, and build a section-by-section pacing plan for test day.',
+    level: 'All levels',
+    prerequisite: 'None — an initial assessment places you at the right starting point',
+    tools: ['Official-format SAT practice tests', 'Score analytics dashboard'],
+    schedule: 'Weekday evenings or Saturday mornings, 6–10 weeks depending on package',
+    curriculum: [
+      { title: 'Weeks 1–3: Math', topics: ['Algebra, problem-solving & data analysis', 'Advanced math (functions, graphs)', 'Calculator vs. no-calculator strategy'] },
+      { title: 'Weeks 4–6: Reading & Writing', topics: ['Evidence-based reading strategy', 'Grammar & rhetoric skills for the Writing section'] },
+      { title: 'Weeks 7+: Full Practice Tests', topics: ['Full-length timed practice tests', 'Pacing plan built from your analytics'] },
+    ],
+    whatYouLearn: [
+      'Core math concepts tested across all SAT question types',
+      'Evidence-based reading strategy for time-pressured passages',
+      'Grammar and rhetoric rules the Writing section rewards',
+      'A personal, section-by-section pacing plan for test day',
+    ],
+    included: [
+      { icon: 'monitor', title: 'Score Analytics', body: 'Detailed breakdowns of where time and points are lost.' },
+      { icon: 'award', title: 'Certificate of Completion', body: 'A certificate confirming you completed the programme.' },
+      { icon: 'clock', title: 'Flexible Scheduling', body: 'Weekday and weekend cohorts to fit your routine.' },
+    ],
+    packages: examPackages(50000, 100000),
   },
   {
     id: 'gmat',
@@ -230,6 +471,30 @@ export const COURSES: Course[] = [
     priceMax: 150000,
     format: 'In-person or online, small group',
     outcomes: ['Data sufficiency mastery', 'Integrated reasoning practice', 'Full-length CATs'],
+    longDescription:
+      'Designed for MBA and business-school applicants, this course covers Quantitative Reasoning (including the GMAT\u2019s distinctive Data Sufficiency questions), Verbal Reasoning, and Integrated Reasoning. You will sit full-length computer-adaptive tests (CATs) and receive a section-by-section breakdown to guide your final review.',
+    level: 'Intermediate',
+    prerequisite: 'Comfortable with high-school level mathematics',
+    tools: ['GMAT-format CAT software', 'Data Sufficiency drill bank'],
+    schedule: 'Weekday evenings or Saturday mornings, 6–10 weeks depending on package',
+    curriculum: [
+      { title: 'Weeks 1–2: Quantitative Reasoning', topics: ['Problem Solving strategy', 'Data Sufficiency logic and shortcuts'] },
+      { title: 'Weeks 3–4: Verbal Reasoning', topics: ['Critical Reasoning argument structures', 'Sentence Correction grammar rules', 'Reading Comprehension strategy'] },
+      { title: 'Weeks 5–6: Integrated Reasoning', topics: ['Multi-source reasoning and graphics interpretation', 'Two-part analysis and table analysis'] },
+      { title: 'Weeks 7+: Full CATs', topics: ['Full-length computer-adaptive practice tests', 'Score breakdown and final review plan'] },
+    ],
+    whatYouLearn: [
+      'Data Sufficiency logic — the GMAT\u2019s most distinctive question type',
+      'How the computer-adaptive format affects section strategy',
+      'Critical Reasoning and Sentence Correction rules for Verbal',
+      'How to interpret Integrated Reasoning data quickly and accurately',
+    ],
+    included: [
+      { icon: 'monitor', title: 'Computer-Adaptive Practice', body: 'Full-length CATs that mirror the real GMAT scoring engine.' },
+      { icon: 'users', title: 'Small-Group Coaching', body: 'Focused attention in groups of 4 or fewer.' },
+      { icon: 'award', title: 'Certificate of Completion', body: 'A certificate confirming you completed the programme.' },
+    ],
+    packages: examPackages(70000, 150000),
   },
   {
     id: 'computer-appreciation',
@@ -241,6 +506,28 @@ export const COURSES: Course[] = [
     priceMax: 30000,
     format: 'In-person, hands-on lab sessions',
     outcomes: ['Confident use of Windows & Office', 'Safe internet & email practice', 'Certificate of completion'],
+    longDescription:
+      'A hands-on introduction to using a computer confidently for work, study or everyday life. You will learn to navigate Windows, use Microsoft Word, Excel and PowerPoint for everyday tasks, browse the internet safely, and manage email — all through practical lab exercises rather than theory alone.',
+    level: 'Beginner',
+    prerequisite: 'None — no prior computer experience required',
+    tools: ['Microsoft Windows', 'Microsoft Word, Excel & PowerPoint', 'Email & web browsers'],
+    schedule: 'Weekday or weekend classes, 2–4 weeks depending on package',
+    curriculum: [
+      { title: 'Week 1: Getting Comfortable with a Computer', topics: ['Navigating Windows, files & folders', 'Typing skills and keyboard shortcuts'] },
+      { title: 'Week 2: Microsoft Office Essentials', topics: ['Word: documents, formatting & printing', 'Excel: basic spreadsheets and formulas', 'PowerPoint: building a simple presentation'] },
+      { title: 'Week 3–4: Internet & Email', topics: ['Safe browsing and spotting scams', 'Setting up and managing email', 'Basic online safety and password hygiene'] },
+    ],
+    whatYouLearn: [
+      'Confident navigation of Windows and common file operations',
+      'Everyday use of Word, Excel and PowerPoint',
+      'Safe, confident internet browsing and email use',
+      'Basic digital safety habits',
+    ],
+    included: [
+      { icon: 'monitor', title: 'Hands-On Lab Sessions', body: 'Practice on real computers, not just slides.' },
+      { icon: 'award', title: 'Certificate of Completion', body: 'A certificate confirming you completed the programme.' },
+    ],
+    packages: ictPackages(20000, 30000),
   },
   {
     id: 'data-analysis',
@@ -253,6 +540,30 @@ export const COURSES: Course[] = [
     format: 'In-person or online',
     outcomes: ['Advanced Excel formulas & pivot tables', 'Power BI dashboard building', 'Capstone analysis project'],
     featured: true,
+    longDescription:
+      'Learn to turn raw spreadsheets into decisions. This course takes you from everyday Excel formulas through pivot tables, data cleaning and advanced functions, then into Power BI for building interactive dashboards. You will finish with a capstone project analysing a realistic business dataset end to end.',
+    level: 'Beginner',
+    prerequisite: 'Basic computer literacy (typing, using a mouse, opening files)',
+    tools: ['Microsoft Excel', 'Power BI', 'Sample business datasets'],
+    schedule: 'Weekday evenings or Saturday mornings, 4–6 weeks depending on package',
+    curriculum: [
+      { title: 'Week 1: Excel Foundations', topics: ['Data cleaning & formatting', 'Core formulas (VLOOKUP/XLOOKUP, IF, SUMIFS)'] },
+      { title: 'Week 2: Pivot Tables & Advanced Excel', topics: ['Building pivot tables & pivot charts', 'Advanced formulas and conditional logic'] },
+      { title: 'Week 3: Introduction to Power BI', topics: ['Importing and shaping data in Power BI', 'Building your first visuals and reports'] },
+      { title: 'Week 4+: Dashboards & Capstone Project', topics: ['Building an interactive dashboard', 'Capstone: end-to-end analysis of a business dataset'] },
+    ],
+    whatYouLearn: [
+      'Cleaning and structuring messy, real-world data',
+      'Advanced Excel formulas and pivot table analysis',
+      'Building interactive dashboards in Power BI',
+      'Presenting data findings clearly to a non-technical audience',
+    ],
+    included: [
+      { icon: 'monitor', title: 'Real Business Datasets', body: 'Practice on realistic, messy data rather than toy examples.' },
+      { icon: 'award', title: 'Capstone Project & Certificate', body: 'A portfolio-ready analysis project plus a certificate of completion.' },
+      { icon: 'clock', title: 'Flexible Scheduling', body: 'Weekday and weekend cohorts to fit your routine.' },
+    ],
+    packages: ictPackages(50000, 80000),
   },
   {
     id: 'digital-marketing',
@@ -264,6 +575,29 @@ export const COURSES: Course[] = [
     priceMax: 70000,
     format: 'In-person or online',
     outcomes: ['Campaign planning & analytics', 'Meta & Google Ads basics', 'Content calendar workflow'],
+    longDescription:
+      'A practical digital marketing course covering the channels businesses actually use — social media, SEO basics, paid advertising on Meta and Google, and content planning. You will build a real content calendar and a sample ad campaign as part of the course, not just review theory.',
+    level: 'Beginner',
+    prerequisite: 'None — no prior marketing experience required',
+    tools: ['Meta Ads Manager', 'Google Ads', 'Content calendar templates'],
+    schedule: 'Weekday evenings or Saturday mornings, 4–6 weeks depending on package',
+    curriculum: [
+      { title: 'Week 1: Foundations & Strategy', topics: ['Understanding your audience and funnel', 'Setting goals and choosing the right channels'] },
+      { title: 'Week 2: Social Media & Content', topics: ['Building a content calendar', 'Organic content strategy for Instagram & Facebook'] },
+      { title: 'Week 3: Paid Advertising', topics: ['Meta Ads Manager basics', 'Google Ads basics and keyword targeting'] },
+      { title: 'Week 4+: Analytics & Campaign Project', topics: ['Reading campaign analytics and adjusting strategy', 'Building and presenting a sample campaign'] },
+    ],
+    whatYouLearn: [
+      'How to plan a content calendar around real business goals',
+      'Setting up and reading Meta and Google ad campaigns',
+      'Core SEO concepts that affect visibility',
+      'How to read campaign analytics and improve performance',
+    ],
+    included: [
+      { icon: 'monitor', title: 'Hands-On Ad Accounts', body: 'Practice inside real Meta and Google Ads interfaces.' },
+      { icon: 'award', title: 'Certificate of Completion', body: 'A certificate confirming you completed the programme.' },
+    ],
+    packages: ictPackages(35000, 70000),
   },
   {
     id: 'ui-ux',
@@ -276,6 +610,30 @@ export const COURSES: Course[] = [
     format: 'In-person or online',
     outcomes: ['User research & wireframes', 'Prototyping in Figma', 'Portfolio-ready case study'],
     featured: true,
+    longDescription:
+      'An introductory UI/UX course for anyone who wants to start designing digital products. You will learn user research and design-thinking fundamentals, wireframing, and prototyping in Figma, then apply it all to a complete case study you can add to your design portfolio.',
+    level: 'Beginner',
+    prerequisite: 'None — no design experience required',
+    tools: ['Figma', 'User research templates'],
+    schedule: 'Weekday evenings or Saturday mornings, 5–8 weeks depending on package',
+    curriculum: [
+      { title: 'Weeks 1–2: Design Thinking & Research', topics: ['Understanding user needs and pain points', 'User interviews and simple usability testing'] },
+      { title: 'Weeks 3–4: Wireframing', topics: ['Low-fidelity wireframes and user flows', 'Information architecture basics'] },
+      { title: 'Weeks 5–6: Prototyping in Figma', topics: ['Figma fundamentals: frames, components, auto-layout', 'Building a clickable prototype'] },
+      { title: 'Weeks 7+: Case Study Project', topics: ['Turning your prototype into a portfolio case study', 'Presenting and defending your design decisions'] },
+    ],
+    whatYouLearn: [
+      'Design-thinking fundamentals and user research basics',
+      'Wireframing and information architecture',
+      'Prototyping a clickable interface in Figma',
+      'How to write and present a design portfolio case study',
+    ],
+    included: [
+      { icon: 'monitor', title: 'Figma Practice Files', body: 'Hands-on projects built directly inside Figma.' },
+      { icon: 'award', title: 'Portfolio Case Study & Certificate', body: 'A finished case study for your portfolio, plus a certificate of completion.' },
+      { icon: 'clock', title: 'Flexible Scheduling', body: 'Weekday and weekend cohorts to fit your routine.' },
+    ],
+    packages: ictPackages(40000, 100000),
   },
 ];
 

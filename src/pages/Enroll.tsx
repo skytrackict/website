@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Seo } from '../components/Seo';
 import { PageHeader, SectionHeading } from '../components/Section';
 import { EnrollButton } from '../components/EnrollButton';
@@ -35,8 +36,8 @@ export default function Enroll() {
           id: c.id,
           kind: 'course',
           name: c.name,
-          amount: Math.round((c.priceMin + c.priceMax) / 2 / 500) * 500,
-          description: `${c.duration} · ${c.format}`,
+          amount: Math.min(...c.packages.map((p) => p.price)),
+          description: `${c.packages.length} packages · ${c.duration}`,
         })),
       },
       {
@@ -125,21 +126,38 @@ export default function Enroll() {
               }
             />
             <div className="mt-8 space-y-3 max-w-2xl">
-              {group.items.map((item) => (
-                <div
-                  key={item.id}
-                  className="flex items-center justify-between gap-4 p-5 rounded-xl border border-line bg-white"
-                >
-                  <div>
-                    <p className="font-semibold text-ink">{item.name}</p>
-                    <p className="text-sm text-slate mt-0.5">{item.description}</p>
+              {group.items.map((item) =>
+                group.id === 'courses' ? (
+                  <Link
+                    key={item.id}
+                    to={`/training/${item.id}`}
+                    className="flex items-center justify-between gap-4 p-5 rounded-xl border border-line bg-white hover:shadow-card transition-shadow"
+                  >
+                    <div>
+                      <p className="font-semibold text-ink">{item.name}</p>
+                      <p className="text-sm text-slate mt-0.5">{item.description}</p>
+                    </div>
+                    <div className="flex items-center gap-2 shrink-0">
+                      <span className="font-display font-bold text-signal whitespace-nowrap">From {naira(item.amount)}</span>
+                      <Icon name="arrow-right" size={16} className="text-slate" />
+                    </div>
+                  </Link>
+                ) : (
+                  <div
+                    key={item.id}
+                    className="flex items-center justify-between gap-4 p-5 rounded-xl border border-line bg-white"
+                  >
+                    <div>
+                      <p className="font-semibold text-ink">{item.name}</p>
+                      <p className="text-sm text-slate mt-0.5">{item.description}</p>
+                    </div>
+                    <div className="flex items-center gap-4 shrink-0">
+                      <span className="font-display font-bold text-ink whitespace-nowrap">{naira(item.amount)}</span>
+                      <EnrollButton item={item} label="Enrol" size="sm" />
+                    </div>
                   </div>
-                  <div className="flex items-center gap-4 shrink-0">
-                    <span className="font-display font-bold text-ink whitespace-nowrap">{naira(item.amount)}</span>
-                    <EnrollButton item={item} label="Enrol" size="sm" />
-                  </div>
-                </div>
-              ))}
+                ),
+              )}
             </div>
           </div>
         </section>

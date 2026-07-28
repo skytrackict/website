@@ -5,6 +5,7 @@ import { EnrollmentProvider } from './components/EnrollmentProvider';
 import Home from './pages/Home';
 import About from './pages/About';
 import Training from './pages/Training';
+import CourseDetail from './pages/CourseDetail';
 import TestingCentre from './pages/TestingCentre';
 import Software from './pages/Software';
 import Workspace from './pages/Workspace';
@@ -28,6 +29,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="training" element={<Training />} />
+          <Route path="training/:courseId" element={<CourseDetail />} />
           <Route path="testing-centre" element={<TestingCentre />} />
           <Route path="software" element={<Software />} />
           <Route path="workspace" element={<Workspace />} />

@@ -8,6 +8,26 @@ export interface Division {
   highlights: string[];
 }
 
+export interface CoursePackage {
+  id: string;
+  name: string;
+  price: number;
+  bestFor: string;
+  features: string[];
+  recommended?: boolean;
+}
+
+export interface CurriculumWeek {
+  title: string;
+  topics: string[];
+}
+
+export interface IncludedItem {
+  icon: string;
+  title: string;
+  body: string;
+}
+
 export interface Course {
   id: string;
   category: 'exam-prep' | 'ict-skills';
@@ -19,6 +39,17 @@ export interface Course {
   format: string;
   outcomes: string[];
   featured?: boolean;
+
+  // Detail-page fields
+  longDescription: string;
+  level: 'Beginner' | 'Intermediate' | 'Advanced' | 'All levels';
+  prerequisite: string;
+  tools: string[];
+  schedule: string;
+  curriculum: CurriculumWeek[];
+  whatYouLearn: string[];
+  included: IncludedItem[];
+  packages: CoursePackage[];
 }
 
 export interface WorkspacePlan {

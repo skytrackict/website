@@ -1,5 +1,5 @@
 import { Icon } from './Icon';
-import { EnrollButton } from './EnrollButton';
+import { Button } from './Button';
 import type { Course } from '../types';
 
 function naira(n: number) {
@@ -7,7 +7,7 @@ function naira(n: number) {
 }
 
 export function CourseCard({ course }: { course: Course }) {
-  const midPrice = Math.round((course.priceMin + course.priceMax) / 2 / 500) * 500;
+  const fromPrice = Math.min(...course.packages.map((p) => p.price));
 
   return (
     <div className="flex flex-col p-6 rounded-2xl border border-line bg-white shadow-card hover:shadow-card-hover transition-shadow">
@@ -43,22 +43,12 @@ export function CourseCard({ course }: { course: Course }) {
 
       <div className="mt-5 pt-5 border-t border-line flex items-center justify-between gap-4">
         <div>
-          <p className="text-xs text-slate">Fee range</p>
-          <p className="font-display font-bold text-ink">
-            {naira(course.priceMin)} – {naira(course.priceMax)}
-          </p>
+          <p className="text-xs text-slate">{course.packages.length} packages from</p>
+          <p className="font-display font-bold text-ink">{naira(fromPrice)}</p>
         </div>
-        <EnrollButton
-          item={{
-            id: course.id,
-            kind: 'course',
-            name: course.name,
-            amount: midPrice,
-            description: `${course.duration} · ${course.format}`,
-          }}
-          label="Enrol Now"
-          size="sm"
-        />
+        <Button to={`/training/${course.id}`} size="sm">
+          View Course
+        </Button>
       </div>
     </div>
   );

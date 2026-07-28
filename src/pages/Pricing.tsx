@@ -2,6 +2,7 @@ import { Seo } from '../components/Seo';
 import { PageHeader, SectionHeading } from '../components/Section';
 import { CtaSection } from '../components/CtaSection';
 import { Button } from '../components/Button';
+import { Link } from 'react-router-dom';
 import { WorkspacePlanRow, BusinessServiceRow, TestingServiceRow } from '../components/PricingRows';
 import { COURSES, WORKSPACE_PLANS, BUSINESS_SERVICES, TESTING_SERVICES } from '../data/content';
 import { EnrollButton } from '../components/EnrollButton';
@@ -32,15 +33,19 @@ export default function Pricing() {
 
       <section className="py-16">
         <div className="container-page">
-          <SectionHeading eyebrow="Training programme fees" title="International exam preparation" />
+          <SectionHeading eyebrow="Training programme fees" title="International exam preparation" description="Each programme has 3 packages — view a course for full package details and to enrol." />
           <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {examCourses.map((c) => (
-              <div key={c.id} className="flex items-center justify-between gap-3 p-4 rounded-xl border border-line bg-white">
+              <Link
+                key={c.id}
+                to={`/training/${c.id}`}
+                className="flex items-center justify-between gap-3 p-4 rounded-xl border border-line bg-white hover:shadow-card transition-shadow"
+              >
                 <span className="text-sm font-semibold text-ink">{c.name}</span>
-                <span className="text-sm font-bold text-ink whitespace-nowrap">
-                  {naira(c.priceMin)}–{naira(c.priceMax)}
+                <span className="text-sm font-bold text-signal whitespace-nowrap">
+                  From {naira(Math.min(...c.packages.map((p) => p.price)))}
                 </span>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -48,15 +53,19 @@ export default function Pricing() {
 
       <section className="py-16 bg-mist">
         <div className="container-page">
-          <SectionHeading eyebrow="ICT & digital skills" title="ICT training fees" />
+          <SectionHeading eyebrow="ICT & digital skills" title="ICT training fees" description="Each course has 3 packages — view a course for full package details and to enrol." />
           <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {ictCourses.map((c) => (
-              <div key={c.id} className="flex items-center justify-between gap-3 p-4 rounded-xl border border-line bg-white">
+              <Link
+                key={c.id}
+                to={`/training/${c.id}`}
+                className="flex items-center justify-between gap-3 p-4 rounded-xl border border-line bg-white hover:shadow-card transition-shadow"
+              >
                 <span className="text-sm font-semibold text-ink">{c.name}</span>
-                <span className="text-sm font-bold text-ink whitespace-nowrap">
-                  {naira(c.priceMin)}–{naira(c.priceMax)}
+                <span className="text-sm font-bold text-signal whitespace-nowrap">
+                  From {naira(Math.min(...c.packages.map((p) => p.price)))}
                 </span>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
