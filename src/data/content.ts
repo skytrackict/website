@@ -1,9 +1,10 @@
 import type {
   Division,
   Course,
+  CoursePackage,
   WorkspacePlan,
   BusinessService,
-  TestingService,
+  FacilityBenefit,
   TeamMember,
   Testimonial,
   FaqItem,
@@ -704,24 +705,68 @@ export const BUSINESS_SERVICES: BusinessService[] = [
   },
 ];
 
-export const TESTING_SERVICES: TestingService[] = [
-  {
-    id: 'facility-rental',
-    name: 'Facility Rental (Exam Sessions)',
-    summary: 'Rent our CBT centre for your own exam sessions, with full technical support.',
-    priceMin: 50000,
-    priceMax: 150000,
-    period: 'per session, depending on exam type & duration',
-  },
-  {
-    id: 'full-day-event',
-    name: 'Full-Day Testing Event',
-    summary: 'Complete facility hire including power, internet, security and candidate coordination.',
-    priceMin: 120000,
-    priceMax: 250000,
-    period: 'per day',
-  },
-];
+export const FACILITY_RENTAL = {
+  title: 'Rent Our Testing Centre',
+  tagline: 'Host your own exam sessions in our secure, accredited facility',
+  description:
+    'For exam bodies, schools and corporate partners who need a secure, well-equipped venue to run their own computer-based or paper-based exam sessions — complete with technical support, invigilation-ready seating and candidate coordination, so you can focus on the exam itself.',
+  benefits: [
+    { icon: 'shield-check', title: 'Secure & monitored', body: 'Biometric candidate check-in, CCTV coverage and a distraction-free testing environment.' },
+    { icon: 'monitor', title: 'CBT-ready workstations', body: 'Reliable computer-based testing setup, or space configured for paper-based sessions.' },
+    { icon: 'shield-check', title: 'Backup power & internet', body: 'Dedicated generator backup and redundant internet so sessions are never interrupted.' },
+    { icon: 'users', title: 'Candidate coordination', body: 'Our team handles check-in, seating and session flow, so your invigilators can focus on the exam.' },
+  ] as FacilityBenefit[],
+  packages: [
+    {
+      id: 'half-day',
+      name: 'Half-Day Exam Session',
+      price: 50000,
+      bestFor: 'A single exam session with a small candidate group',
+      features: [
+        'Up to 4 hours of facility access',
+        'CBT workstations & invigilation-ready seating',
+        'Biometric candidate check-in',
+        'Backup power & internet included',
+      ],
+    },
+    {
+      id: 'full-day',
+      name: 'Full-Day Exam Session',
+      price: 120000,
+      bestFor: 'Multiple sessions or larger candidate groups in one day',
+      features: [
+        'Up to 8 hours of facility access',
+        'CBT workstations & invigilation-ready seating',
+        'Biometric candidate check-in',
+        'Backup power, internet & on-site security',
+      ],
+      recommended: true,
+    },
+    {
+      id: 'multi-day',
+      name: 'Multi-Day / Custom Event',
+      price: 250000,
+      bestFor: 'Exam bodies running multi-day or high-volume testing events',
+      features: [
+        'Custom multi-day scheduling',
+        'Dedicated candidate coordination team',
+        'On-site technical support throughout',
+        'Priority scheduling & a named account contact',
+      ],
+    },
+  ] as CoursePackage[],
+};
+
+/** Maps each international exam to the SkyTrack ICT training course that prepares for it. */
+export const EXAM_TO_COURSE_ID: Record<string, string> = {
+  IELTS: 'ielts',
+  'PTE Academic': 'pte',
+  CELPIP: 'celpip',
+  SAT: 'sat',
+  'TOEFL iBT': 'toefl',
+  GRE: 'gre',
+  GMAT: 'gmat',
+};
 
 export const TEAM: TeamMember[] = [
   {

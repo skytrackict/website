@@ -1,10 +1,14 @@
+import { Link } from 'react-router-dom';
 import { Seo } from '../components/Seo';
 import { PageHeader, SectionHeading } from '../components/Section';
 import { Icon } from '../components/Icon';
+import { Button } from '../components/Button';
 import { CtaSection } from '../components/CtaSection';
-import { TestingServiceRow } from '../components/PricingRows';
-import { EnrollButton } from '../components/EnrollButton';
-import { TESTING_SERVICES } from '../data/content';
+import { EXAM_TO_COURSE_ID, FACILITY_RENTAL } from '../data/content';
+
+function naira(n: number) {
+  return `₦${n.toLocaleString('en-NG')}`;
+}
 
 const exams = [
   { name: 'IELTS', desc: 'International English Language Testing System' },
@@ -17,55 +21,65 @@ const exams = [
 ];
 
 const process = [
-  { step: '01', title: 'Book your slot', body: 'Choose your exam and preferred date, then pay securely online.' },
-  { step: '02', title: 'Verify on arrival', body: 'Check in with valid ID; our system confirms your booking and seat instantly.' },
-  { step: '03', title: 'Sit the exam', body: 'Take your test in a monitored, distraction-free CBT environment.' },
-  { step: '04', title: 'Get your results', body: 'Results are released per each exam body\u2019s official timeline.' },
+  { step: '01', title: 'Enrol in a class', body: 'Choose a package on the exam\u2019s training page and pay securely online.' },
+  { step: '02', title: 'Attend classes & mocks', body: 'Learn with an instructor and sit timed mock exams to track your progress.' },
+  { step: '03', title: 'Register for your exam', body: 'Book your official exam date directly on the certification body\u2019s platform.' },
+  { step: '04', title: 'Sit your exam', body: 'Write your exam at an accredited testing centre on your scheduled date.' },
 ];
 
 export default function TestingCentre() {
+  const minFacilityPrice = Math.min(...FACILITY_RENTAL.packages.map((p) => p.price));
+
   return (
     <>
       <Seo
         title="Testing Centre"
-        description="SkyTrack ICT's accredited computer-based testing centre delivers IELTS, PTE, CELPIP, SAT, TOEFL, GRE and GMAT, plus school entrance and corporate assessments."
+        description="SkyTrack ICT provides training for IELTS, PTE, CELPIP, SAT, TOEFL, GRE and GMAT, plus school entrance and corporate assessments, delivered through accredited testing centres."
         path="/testing-centre"
       />
       <PageHeader
         eyebrow="Testing & Certification Centre"
-        title="Secure, AI-assisted computer-based testing"
-        description="Accredited CBT delivery for international certification exams, school entrance exams, promotional exams and corporate skills assessments — under monitored, tamper-proof conditions."
+        title="Expert training for international certification exams"
+        description="We prepare you for these exams through structured classes and mock tests. Registration and sitting the exam itself happens through each certification body's official platform, at an accredited testing centre."
       />
 
       <section className="py-20 md:py-24">
         <div className="container-page">
-          <SectionHeading eyebrow="Exams we administer" title="International certification exams" />
+          <SectionHeading eyebrow="Exams we prepare you for" title="International certification exams" />
           <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {exams.map((e) => (
-              <div key={e.name} className="flex items-center justify-between gap-3 p-5 rounded-xl border border-line bg-white">
-                <div>
-                  <p className="font-bold text-ink">{e.name}</p>
-                  <p className="text-xs text-slate mt-0.5">{e.desc}</p>
-                </div>
-                <EnrollButton
-                  item={{ id: `exam-${e.name.toLowerCase()}`, kind: 'testing-service', name: `${e.name} Exam Slot`, amount: 45000, description: e.desc }}
-                  label="Book"
-                  size="sm"
-                  variant="ghost"
-                />
-              </div>
-            ))}
+            {exams.map((e) => {
+              const courseId = EXAM_TO_COURSE_ID[e.name];
+              return (
+                <Link
+                  key={e.name}
+                  to={`/training/${courseId}`}
+                  className="flex items-center justify-between gap-3 p-5 rounded-xl border border-line bg-white hover:shadow-card transition-shadow"
+                >
+                  <div>
+                    <p className="font-bold text-ink">{e.name}</p>
+                    <p className="text-xs text-slate mt-0.5">{e.desc}</p>
+                  </div>
+                  <span className="inline-flex items-center gap-1.5 text-sm font-semibold px-4 py-2 rounded-full border border-line text-ink">
+                    View Class
+                    <Icon name="arrow-right" size={14} />
+                  </span>
+                </Link>
+              );
+            })}
           </div>
-          <p className="mt-4 text-xs text-slate">
-            Exact fees are set by each certification body and confirmed at booking; the amount shown at checkout is
-            an indicative slot-booking deposit.
+          <p className="mt-4 text-sm text-slate max-w-2xl flex items-start gap-2">
+            <Icon name="shield-check" size={15} className="mt-0.5 shrink-0 text-signal" />
+            SkyTrack ICT provides classes and mock exams to prepare you for each of these tests. We don't register
+            you for the exam itself — you book your official exam date directly with the certification body, and
+            sit it at an accredited testing centre (which may or may not be SkyTrack ICT, depending on your
+            location).
           </p>
         </div>
       </section>
 
       <section className="py-20 md:py-24 bg-mist">
         <div className="container-page">
-          <SectionHeading eyebrow="How it works" title="From booking to results, in four steps" />
+          <SectionHeading eyebrow="How it works" title="From class enrolment to exam day" />
           <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {process.map((p) => (
               <div key={p.step} className="p-6 rounded-2xl bg-white border border-line">
@@ -85,16 +99,16 @@ export default function TestingCentre() {
             title="Rent our testing centre"
             description="Host your own exam sessions in our secure facility, with full technical and administrative support."
           />
-          <div className="mt-10 space-y-3 max-w-2xl">
-            {TESTING_SERVICES.map((s) => (
-              <TestingServiceRow key={s.id} service={s} />
-            ))}
-          </div>
-          <div className="mt-8 flex items-center gap-3 p-5 rounded-xl bg-signal/5 border border-signal/15 max-w-2xl">
-            <Icon name="shield-check" size={20} className="text-signal shrink-0" />
-            <p className="text-sm text-ink/80">
-              Every session includes biometric candidate check-in, backup power and internet, and live invigilation.
-            </p>
+          <div className="mt-10 max-w-2xl p-6 rounded-2xl border border-line bg-white flex flex-col sm:flex-row sm:items-center justify-between gap-5">
+            <div>
+              <p className="font-bold text-ink">Half-day, full-day & multi-day packages</p>
+              <p className="text-sm text-slate mt-1.5">
+                CBT workstations, biometric check-in, backup power &amp; internet, and full candidate coordination
+                included.
+              </p>
+              <p className="mt-2 font-display font-bold text-ink">From {naira(minFacilityPrice)}</p>
+            </div>
+            <Button to="/testing-centre/rent-facility">View Packages</Button>
           </div>
         </div>
       </section>

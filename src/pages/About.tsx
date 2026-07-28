@@ -2,6 +2,8 @@ import { Seo } from '../components/Seo';
 import { PageHeader, SectionHeading } from '../components/Section';
 import { Icon } from '../components/Icon';
 import { CtaSection } from '../components/CtaSection';
+import { StoryIllustration } from '../components/StoryIllustration';
+import { MissionIllustration } from '../components/MissionIllustration';
 import { TEAM } from '../data/content';
 
 export default function About() {
@@ -22,7 +24,10 @@ export default function About() {
         <div className="container-page grid lg:grid-cols-2 gap-14">
           <div>
             <SectionHeading eyebrow="Our story" title="From a testing centre to a full innovation hub" />
-            <p className="mt-5 text-slate leading-relaxed">
+            <div className="mt-6">
+              <StoryIllustration />
+            </div>
+            <p className="mt-6 text-slate leading-relaxed">
               SkyTrack ICT began by delivering secure, AI-assisted computer-based testing for academic
               institutions, professional bodies and corporate organisations across Nigeria — hosting
               international certification exams, school entrance exams and skills assessments in a
@@ -37,7 +42,10 @@ export default function About() {
           </div>
           <div>
             <SectionHeading eyebrow="Our mission" title="Make testing, training and technology dependable" />
-            <p className="mt-5 text-slate leading-relaxed">
+            <div className="mt-6">
+              <MissionIllustration />
+            </div>
+            <p className="mt-6 text-slate leading-relaxed">
               Our mission is to remove uncertainty from the moments that matter — a certification exam, a
               new hire's background check, a founder's first registered business, a team's first proper
               office. We do this by combining trained people, secure processes and software we build

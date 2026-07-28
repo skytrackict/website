@@ -1,5 +1,5 @@
 import { EnrollButton } from './EnrollButton';
-import type { WorkspacePlan, BusinessService, TestingService } from '../types';
+import type { WorkspacePlan, BusinessService } from '../types';
 
 function naira(n: number) {
   return `₦${n.toLocaleString('en-NG')}`;
@@ -62,25 +62,3 @@ export function BusinessServiceRow({ service }: { service: BusinessService }) {
   );
 }
 
-export function TestingServiceRow({ service }: { service: TestingService }) {
-  const midAmount = Math.round((service.priceMin + service.priceMax) / 2 / 500) * 500;
-  return (
-    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 py-4 px-5 rounded-xl border border-line bg-white">
-      <div>
-        <p className="font-semibold text-ink">{service.name}</p>
-        <p className="text-sm text-slate mt-0.5">{service.summary}</p>
-      </div>
-      <div className="flex items-center gap-4 shrink-0">
-        <span className="font-display font-bold text-ink whitespace-nowrap text-sm">
-          {naira(service.priceMin)}–{naira(service.priceMax)}
-        </span>
-        <EnrollButton
-          item={{ id: service.id, kind: 'testing-service', name: service.name, amount: midAmount, description: service.period }}
-          label="Request"
-          size="sm"
-          variant="ghost"
-        />
-      </div>
-    </div>
-  );
-}

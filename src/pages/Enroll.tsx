@@ -8,7 +8,7 @@ import {
   COURSES,
   WORKSPACE_PLANS,
   BUSINESS_SERVICES,
-  TESTING_SERVICES,
+  FACILITY_RENTAL,
 } from '../data/content';
 import type { Sellable } from '../types';
 
@@ -20,7 +20,7 @@ interface Group {
   id: string;
   label: string;
   icon: import('../components/Icon').IconName;
-  items: Sellable[];
+  items: (Sellable & { href?: string })[];
 }
 
 export default function Enroll() {
@@ -38,6 +38,7 @@ export default function Enroll() {
           name: c.name,
           amount: Math.min(...c.packages.map((p) => p.price)),
           description: `${c.packages.length} packages · ${c.duration}`,
+          href: `/training/${c.id}`,
         })),
       },
       {
@@ -66,15 +67,18 @@ export default function Enroll() {
       },
       {
         id: 'testing',
-        label: 'Testing Centre',
+        label: 'Testing Centre — Facility Rental',
         icon: 'radar',
-        items: TESTING_SERVICES.map((s) => ({
-          id: s.id,
-          kind: 'testing-service',
-          name: s.name,
-          amount: Math.round((s.priceMin + s.priceMax) / 2 / 500) * 500,
-          description: s.period,
-        })),
+        items: [
+          {
+            id: 'facility-rental',
+            kind: 'testing-service',
+            name: FACILITY_RENTAL.title,
+            amount: Math.min(...FACILITY_RENTAL.packages.map((p) => p.price)),
+            description: 'Half-day, full-day & multi-day packages for exam bodies & partners',
+            href: '/testing-centre/rent-facility',
+          },
+        ],
       },
     ],
     [],
@@ -127,10 +131,10 @@ export default function Enroll() {
             />
             <div className="mt-8 space-y-3 max-w-2xl">
               {group.items.map((item) =>
-                group.id === 'courses' ? (
+                item.href ? (
                   <Link
                     key={item.id}
-                    to={`/training/${item.id}`}
+                    to={item.href}
                     className="flex items-center justify-between gap-4 p-5 rounded-xl border border-line bg-white hover:shadow-card transition-shadow"
                   >
                     <div>

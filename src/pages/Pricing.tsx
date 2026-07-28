@@ -3,8 +3,8 @@ import { PageHeader, SectionHeading } from '../components/Section';
 import { CtaSection } from '../components/CtaSection';
 import { Button } from '../components/Button';
 import { Link } from 'react-router-dom';
-import { WorkspacePlanRow, BusinessServiceRow, TestingServiceRow } from '../components/PricingRows';
-import { COURSES, WORKSPACE_PLANS, BUSINESS_SERVICES, TESTING_SERVICES } from '../data/content';
+import { WorkspacePlanRow, BusinessServiceRow } from '../components/PricingRows';
+import { COURSES, WORKSPACE_PLANS, BUSINESS_SERVICES, FACILITY_RENTAL } from '../data/content';
 import { EnrollButton } from '../components/EnrollButton';
 
 function naira(n: number) {
@@ -119,10 +119,15 @@ export default function Pricing() {
       <section className="py-16">
         <div className="container-page">
           <SectionHeading eyebrow="Testing centre" title="Facility usage for exam bodies & partners" />
-          <div className="mt-8 space-y-3 max-w-2xl">
-            {TESTING_SERVICES.map((s) => (
-              <TestingServiceRow key={s.id} service={s} />
-            ))}
+          <div className="mt-8 max-w-2xl p-6 rounded-2xl border border-line bg-white flex flex-col sm:flex-row sm:items-center justify-between gap-5">
+            <div>
+              <p className="font-bold text-ink">Half-day, full-day & multi-day packages</p>
+              <p className="text-sm text-slate mt-1.5">Rent our secure CBT facility to host your own exam sessions.</p>
+              <p className="mt-2 font-display font-bold text-ink">
+                From {naira(Math.min(...FACILITY_RENTAL.packages.map((p) => p.price)))}
+              </p>
+            </div>
+            <Button to="/testing-centre/rent-facility">View Packages</Button>
           </div>
 
           <div className="mt-10 p-6 rounded-2xl border border-line max-w-2xl">

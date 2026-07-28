@@ -7,6 +7,7 @@ import About from './pages/About';
 import Training from './pages/Training';
 import CourseDetail from './pages/CourseDetail';
 import TestingCentre from './pages/TestingCentre';
+import FacilityRentalDetail from './pages/FacilityRentalDetail';
 import Software from './pages/Software';
 import Workspace from './pages/Workspace';
 import BusinessSolutions from './pages/BusinessSolutions';
@@ -31,6 +32,7 @@ function App() {
           <Route path="training" element={<Training />} />
           <Route path="training/:courseId" element={<CourseDetail />} />
           <Route path="testing-centre" element={<TestingCentre />} />
+          <Route path="testing-centre/rent-facility" element={<FacilityRentalDetail />} />
           <Route path="software" element={<Software />} />
           <Route path="workspace" element={<Workspace />} />
           <Route path="business-solutions" element={<BusinessSolutions />} />

@@ -72,13 +72,10 @@ export interface BusinessService {
   deliverables: string[];
 }
 
-export interface TestingService {
-  id: string;
-  name: string;
-  summary: string;
-  priceMin: number;
-  priceMax: number;
-  period: string;
+export interface FacilityBenefit {
+  icon: string;
+  title: string;
+  body: string;
 }
 
 export interface TeamMember {
