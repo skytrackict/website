@@ -24,7 +24,7 @@ export default function Recruitment() {
         description="End-to-end recruitment support — from role scoping to a verified shortlist — backed by our own testing centre and background-check pipeline."
       />
 
-      <section className="py-20 md:py-24">
+      <section className="py-14 sm:py-20 md:py-24">
         <div className="container-page">
           <SectionHeading eyebrow="How it works" title="Our recruitment process" />
           <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">

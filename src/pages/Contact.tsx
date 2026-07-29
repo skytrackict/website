@@ -46,7 +46,7 @@ export default function Contact() {
         description="Reach us by phone, WhatsApp, email or the form below — we typically respond within one business day."
       />
 
-      <section className="py-20 md:py-24">
+      <section className="py-14 sm:py-20 md:py-24">
         <div className="container-page grid lg:grid-cols-[0.9fr_1.1fr] gap-12">
           <div>
             <div className="space-y-5">
@@ -60,7 +60,7 @@ export default function Contact() {
                   <span className="w-10 h-10 rounded-lg bg-signal/10 text-signal flex items-center justify-center shrink-0">
                     <Icon name={item.icon} size={18} />
                   </span>
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-xs font-semibold uppercase tracking-wide text-slate">{item.label}</p>
                     {item.href ? (
                       <a href={item.href} className="mt-0.5 block font-medium text-ink hover:text-signal">

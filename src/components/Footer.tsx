@@ -7,8 +7,8 @@ export function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer className="bg-ink text-white">
-      <div className="container-page py-16 grid gap-12 lg:grid-cols-[1.3fr_1fr_1fr_1.1fr]">
-        <div>
+      <div className="container-page py-12 sm:py-16 grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-[1.3fr_1fr_1fr_1.1fr] lg:gap-12">
+        <div className="col-span-2 lg:col-span-1">
           <Link to="/" className="flex items-center gap-2.5">
             <img src={logo} alt="" width={34} height={34} className="rounded-md" />
             <span className="font-display font-bold text-lg">
@@ -71,7 +71,7 @@ export function Footer() {
           </ul>
         </div>
 
-        <div>
+        <div className="col-span-2 lg:col-span-1">
           <p className="text-xs font-semibold uppercase tracking-wider text-white/40 mb-4">Get in Touch</p>
           <ul className="space-y-3 text-sm text-white/70">
             <li className="flex items-start gap-2.5">
@@ -101,7 +101,7 @@ export function Footer() {
       <div className="border-t border-white/10">
         <div className="container-page py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/50">
           <p>© {year} {SITE.legalName}. All rights reserved.</p>
-          <div className="flex items-center gap-5">
+          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
             <Link to="/terms" className="hover:text-white">Terms &amp; Conditions</Link>
             <Link to="/privacy" className="hover:text-white">Privacy Policy</Link>
             <Link to="/refund-policy" className="hover:text-white">Refund Policy</Link>

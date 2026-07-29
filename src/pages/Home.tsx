@@ -49,19 +49,19 @@ export default function Home() {
 
       {/* Hero */}
       <section className="relative overflow-hidden bg-ink text-white">
-        <div className="container-page relative grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center py-16 md:py-24">
+        <div className="container-page relative grid lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-12 items-center py-12 sm:py-12 sm:py-16 md:py-24">
           <div className="fade-up">
             <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-amber bg-amber/10 px-3 py-1.5 rounded-full">
               Testing · Training · Technology
             </span>
-            <h1 className="mt-6 text-[2.3rem] sm:text-[3rem] lg:text-[3.4rem] font-bold leading-[1.06]">
+            <h1 className="mt-5 sm:mt-6 text-[1.95rem] sm:text-[2.3rem] md:text-[2.8rem] lg:text-[3.4rem] font-bold leading-[1.12] sm:leading-[1.06]">
               Verified, trackable solutions for exams, skills and business.
             </h1>
-            <p className="mt-6 text-white/70 text-lg leading-relaxed max-w-xl">
+            <p className="mt-5 sm:mt-6 text-white/70 text-base sm:text-lg leading-relaxed max-w-xl">
               SkyTrack ICT brings certification testing, professional training, software engineering,
               coworking space and business support together — book any of it online in minutes.
             </p>
-            <div className="mt-9 flex flex-wrap gap-3">
+            <div className="mt-8 sm:mt-9 flex flex-wrap gap-3">
               <Button to="/enroll" size="lg">
                 Enrol / Book Now
               </Button>
@@ -87,7 +87,7 @@ export default function Home() {
       </section>
 
       {/* Divisions */}
-      <section className="py-20 md:py-28">
+      <section className="py-14 sm:py-20 md:py-28">
         <div className="container-page">
           <SectionHeading
             eyebrow="What we offer"
@@ -103,7 +103,7 @@ export default function Home() {
       </section>
 
       {/* Specialist services */}
-      <section className="py-20 md:py-24 bg-mist">
+      <section className="py-14 sm:py-20 md:py-24 bg-mist">
         <div className="container-page">
           <SectionHeading
             eyebrow="Specialist services"
@@ -119,7 +119,7 @@ export default function Home() {
       </section>
 
       {/* Why choose us */}
-      <section className="py-20 md:py-28">
+      <section className="py-14 sm:py-20 md:py-28">
         <div className="container-page">
           <SectionHeading eyebrow="Why SkyTrack ICT" title="Built for accuracy, from booking to delivery" align="center" />
           <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -147,7 +147,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 md:py-28">
+      <section className="py-14 sm:py-20 md:py-28">
         <div className="container-page">
           <SectionHeading eyebrow="Trusted by candidates & clients" title="What people say about working with us" />
           <div className="mt-12">

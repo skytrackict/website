@@ -37,10 +37,10 @@ export function Navbar() {
         scrolled ? 'bg-white/95 backdrop-blur border-b border-line shadow-[0_1px_0_rgba(10,22,40,0.04)]' : 'bg-white/80 backdrop-blur'
       }`}
     >
-      <div className="container-page flex items-center justify-between h-[72px]">
-        <Link to="/" className="flex items-center gap-2.5 shrink-0" aria-label="SkyTrack ICT home">
-          <img src={logo} alt="" width={36} height={36} className="rounded-md" />
-          <span className="font-display font-bold text-[1.15rem] leading-tight text-ink">
+      <div className="container-page flex items-center justify-between h-16 sm:h-[72px]">
+        <Link to="/" className="flex items-center gap-2 sm:gap-2.5 shrink-0 min-w-0" aria-label="SkyTrack ICT home">
+          <img src={logo} alt="" width={32} height={32} className="rounded-md w-8 h-8 sm:w-9 sm:h-9 shrink-0" />
+          <span className="font-display font-bold text-base sm:text-[1.15rem] leading-tight text-ink truncate">
             SkyTrack<span className="text-signal"> ICT</span>
           </span>
         </Link>

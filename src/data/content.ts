@@ -636,6 +636,42 @@ export const COURSES: Course[] = [
     ],
     packages: ictPackages(40000, 100000),
   },
+  {
+    id: '3d-animation',
+    category: 'ict-skills',
+    name: '3D Animation (Introductory)',
+    summary: 'Learn 3D modelling, rigging and animation fundamentals using industry-standard software.',
+    duration: '6–10 weeks',
+    priceMin: 60000,
+    priceMax: 150000,
+    format: 'In-person or online',
+    outcomes: ['3D modelling & texturing basics', 'Character rigging fundamentals', 'A finished animated short'],
+    featured: true,
+    longDescription:
+      'An introductory 3D Animation course for anyone who wants to start creating characters and motion for film, games or content. You will learn the full pipeline — modelling, texturing, rigging and animating — and finish with a short animated piece for your portfolio.',
+    level: 'Beginner',
+    prerequisite: 'None — no prior 3D or animation experience required',
+    tools: ['Blender (or Autodesk Maya)', 'Rendering & compositing basics'],
+    schedule: 'Weekday evenings or Saturday mornings, 6–10 weeks depending on package',
+    curriculum: [
+      { title: 'Weeks 1–2: 3D Modelling Basics', topics: ['Navigating the 3D viewport & interface', 'Modelling simple props and objects', 'Introduction to topology'] },
+      { title: 'Weeks 3–4: Texturing & Lighting', topics: ['UV unwrapping and basic materials', 'Lighting a 3D scene for mood and clarity'] },
+      { title: 'Weeks 5–6: Rigging Fundamentals', topics: ['Building a basic character skeleton', 'Weight painting and deformation basics'] },
+      { title: 'Weeks 7+: Animation & Final Project', topics: ['Keyframe animation and timing principles', 'Rendering and compositing your final animated short'] },
+    ],
+    whatYouLearn: [
+      'The full 3D pipeline — modelling, texturing, rigging and animation',
+      'Core principles of timing and motion for believable animation',
+      'How to light and render a 3D scene',
+      'How to plan and finish a short animated project from start to end',
+    ],
+    included: [
+      { icon: 'monitor', title: 'Hands-On Project Files', body: 'Practice on real 3D scenes and character rigs, not just tutorials.' },
+      { icon: 'award', title: 'Portfolio Animation & Certificate', body: 'A finished animated short for your portfolio, plus a certificate of completion.' },
+      { icon: 'clock', title: 'Flexible Scheduling', body: 'Weekday and weekend cohorts to fit your routine.' },
+    ],
+    packages: ictPackages(60000, 150000),
+  },
 ];
 
 export const WORKSPACE_PLANS: WorkspacePlan[] = [
@@ -643,14 +679,59 @@ export const WORKSPACE_PLANS: WorkspacePlan[] = [
   { id: 'ws-weekly', group: 'coworking', name: 'Weekly Co-Working Desk', price: '₦7,500', period: 'per week' },
   { id: 'ws-monthly', group: 'coworking', name: 'Monthly Co-Working Desk', price: '₦25,000', period: 'per month' },
   { id: 'ws-weekend', group: 'coworking', name: 'Weekend Study Access', price: '₦1,500', period: 'per day (Saturdays)' },
-  { id: 'po-small', group: 'private-office', name: 'Small Private Office', capacity: '1–2 people', price: '₦60,000 – ₦80,000', period: 'monthly' },
-  { id: 'po-medium', group: 'private-office', name: 'Medium Private Office', capacity: '3–4 people', price: '₦100,000 – ₦150,000', period: 'monthly' },
-  { id: 'po-large', group: 'private-office', name: 'Large Private Office', capacity: '5–6 people', price: '₦180,000 – ₦250,000', period: 'monthly' },
-  { id: 'po-daily', group: 'private-office', name: 'Daily Private Office Use', price: '₦10,000', period: 'per day', note: 'subject to availability' },
   { id: 'cf-small', group: 'conference', name: 'Small Meeting Room', capacity: '6–8 people', price: '₦5,000/hr', period: '₦18,000 half-day • ₦30,000 full day' },
   { id: 'cf-medium', group: 'conference', name: 'Medium Conference Room', capacity: '10–20 people', price: '₦10,000/hr', period: '₦35,000 half-day • ₦60,000 full day' },
   { id: 'cf-hall', group: 'conference', name: 'Training Hall', capacity: '30–60 people', price: '₦25,000/hr', period: '₦70,000 half-day • ₦120,000 full day' },
 ];
+
+/** Private offices, presented as selectable packages on their own detail page (see PrivateOfficeDetail). */
+export const PRIVATE_OFFICE_RENTAL = {
+  title: 'Private Offices',
+  tagline: 'Dedicated, lockable office space for your team',
+  description:
+    'Fully furnished private offices for teams who want their own dedicated space without signing a long commercial lease — with coworking amenities included and the flexibility to move between sizes as your team grows.',
+  benefits: [
+    { icon: 'lock', title: 'Private & lockable', body: 'Your own dedicated, secure office — not a shared desk.' },
+    { icon: 'wifi', title: 'High-speed internet', body: 'Reliable, business-grade internet included in every office.' },
+    { icon: 'shield-check', title: 'Backup power', body: 'Uninterrupted power so your team can always work.' },
+    { icon: 'coffee', title: 'Shared amenities', body: 'Access to coffee, refreshments and common areas.' },
+  ] as FacilityBenefit[],
+  packages: [
+    {
+      id: 'small',
+      name: 'Small Private Office',
+      price: 70000,
+      priceLabel: '₦60,000–₦80,000',
+      bestFor: 'Teams of 1–2 people',
+      features: ['Lockable private office', 'Desk & seating for up to 2', 'High-speed internet', 'Monthly billing'],
+    },
+    {
+      id: 'medium',
+      name: 'Medium Private Office',
+      price: 125000,
+      priceLabel: '₦100,000–₦150,000',
+      bestFor: 'Teams of 3–4 people',
+      features: ['Lockable private office', 'Desk & seating for up to 4', 'High-speed internet', 'Monthly billing'],
+      recommended: true,
+    },
+    {
+      id: 'large',
+      name: 'Large Private Office',
+      price: 215000,
+      priceLabel: '₦180,000–₦250,000',
+      bestFor: 'Teams of 5–6 people',
+      features: ['Lockable private office', 'Desk & seating for up to 6', 'High-speed internet', 'Monthly billing'],
+    },
+    {
+      id: 'daily',
+      name: 'Daily Private Office Use',
+      price: 10000,
+      priceLabel: '₦10,000/day',
+      bestFor: 'Occasional or trial use, subject to availability',
+      features: ['Full private office for the day', 'High-speed internet', 'No monthly commitment'],
+    },
+  ] as CoursePackage[],
+};
 
 export const BUSINESS_SERVICES: BusinessService[] = [
   {
@@ -660,6 +741,25 @@ export const BUSINESS_SERVICES: BusinessService[] = [
     priceMin: 35000,
     priceMax: 45000,
     deliverables: ['Name availability check', 'CAC filing', 'Registration certificate'],
+    longDescription:
+      'Get your business name properly registered with the Corporate Affairs Commission (CAC), so you can open a business bank account, sign contracts and operate legitimately. We handle the name availability search, filing and documentation from start to finish.',
+    packages: [
+      {
+        id: 'standard',
+        name: 'Standard Filing',
+        price: 35000,
+        bestFor: 'Founders who aren\u2019t in a rush and want the standard process',
+        features: ['Name availability check', 'CAC filing', 'Registration certificate', '5–10 business days'],
+      },
+      {
+        id: 'express',
+        name: 'Express Filing',
+        price: 45000,
+        bestFor: 'Founders who need their registration completed quickly',
+        features: ['Name availability check', 'Priority CAC filing', 'Registration certificate', '2–3 business days'],
+        recommended: true,
+      },
+    ],
   },
   {
     id: 'llc',
@@ -668,6 +768,32 @@ export const BUSINESS_SERVICES: BusinessService[] = [
     priceMin: 90000,
     priceMax: 150000,
     deliverables: ['Memorandum & Articles', 'CAC incorporation', 'TIN registration support'],
+    longDescription:
+      'Incorporate a private limited company (Ltd) with proper statutory documentation — the structure most investors, banks and larger clients expect. We prepare your Memorandum & Articles of Association, handle CAC incorporation, and support your TIN registration.',
+    packages: [
+      {
+        id: 'standard',
+        name: 'Standard Incorporation',
+        price: 90000,
+        bestFor: 'Straightforward incorporations with standard share structure',
+        features: ['Memorandum & Articles of Association', 'CAC incorporation filing', 'Certificate of incorporation'],
+      },
+      {
+        id: 'plus-tin',
+        name: 'Incorporation + TIN & Compliance Pack',
+        price: 120000,
+        bestFor: 'Founders who also need tax registration sorted immediately',
+        features: ['Everything in Standard', 'TIN registration support', 'Basic post-registration compliance checklist'],
+        recommended: true,
+      },
+      {
+        id: 'priority',
+        name: 'Priority Incorporation + Support',
+        price: 150000,
+        bestFor: 'Founders who need it done fast, with ongoing guidance after',
+        features: ['Everything in the TIN & Compliance Pack', 'Priority processing', '30 days of post-registration support'],
+      },
+    ],
   },
   {
     id: 'branding',
@@ -676,6 +802,32 @@ export const BUSINESS_SERVICES: BusinessService[] = [
     priceMin: 20000,
     priceMax: 60000,
     deliverables: ['Logo design (3 concepts)', 'Brand colour & type system', 'Brand guideline document'],
+    longDescription:
+      'A cohesive visual identity that makes your business look as credible as the work you do — from a logo you\u2019re proud to put on an invoice, to a full brand system your team can use consistently everywhere.',
+    packages: [
+      {
+        id: 'logo-only',
+        name: 'Logo Only',
+        price: 20000,
+        bestFor: 'Founders who just need a professional logo to get started',
+        features: ['3 initial logo concepts', '2 rounds of revisions', 'Final files (PNG, SVG, PDF)'],
+      },
+      {
+        id: 'logo-kit',
+        name: 'Logo + Brand Kit',
+        price: 40000,
+        bestFor: 'Businesses that want a consistent look across materials',
+        features: ['Everything in Logo Only', 'Brand colour palette & typography', 'Business card & letterhead templates'],
+        recommended: true,
+      },
+      {
+        id: 'full-identity',
+        name: 'Full Brand Identity',
+        price: 60000,
+        bestFor: 'Businesses ready to look established across every touchpoint',
+        features: ['Everything in Logo + Brand Kit', 'Full brand guideline document', 'Social media templates'],
+      },
+    ],
   },
   {
     id: 'website',
@@ -685,6 +837,32 @@ export const BUSINESS_SERVICES: BusinessService[] = [
     priceMax: 350000,
     period: 'depending on scope',
     deliverables: ['Custom design & build', 'Mobile-optimised layout', 'Basic SEO setup'],
+    longDescription:
+      'A responsive, professional website built around what your business actually needs — whether that\u2019s a simple one-page presence or a full custom site with e-commerce and content management.',
+    packages: [
+      {
+        id: 'landing',
+        name: 'Landing Page',
+        price: 80000,
+        bestFor: 'A single, focused page to establish your online presence',
+        features: ['1-page custom design', 'Mobile-optimised layout', 'Basic SEO setup', 'Contact form'],
+      },
+      {
+        id: 'business-site',
+        name: 'Business Website (5–7 pages)',
+        price: 180000,
+        bestFor: 'Most small and medium businesses',
+        features: ['Up to 7 custom-designed pages', 'Mobile-optimised layout', 'Basic SEO setup', 'Content management access'],
+        recommended: true,
+      },
+      {
+        id: 'custom-ecommerce',
+        name: 'Custom / E-commerce Website',
+        price: 350000,
+        bestFor: 'Businesses selling products online or needing custom functionality',
+        features: ['Fully custom design & build', 'Online store / payment integration', 'Product & inventory management', 'Priority support during launch'],
+      },
+    ],
   },
   {
     id: 'biz-plan',
@@ -693,6 +871,32 @@ export const BUSINESS_SERVICES: BusinessService[] = [
     priceMin: 30000,
     priceMax: 150000,
     deliverables: ['Market & financial analysis', 'Executive summary', 'Pitch-ready formatting'],
+    longDescription:
+      'A clear, well-researched business plan that helps you think through your business and gives investors, banks or partners confidence in the numbers behind it.',
+    packages: [
+      {
+        id: 'lean',
+        name: 'Lean Business Plan',
+        price: 30000,
+        bestFor: 'Early-stage founders who need a clear, concise plan',
+        features: ['Executive summary', 'Market overview', 'Basic financial projections'],
+      },
+      {
+        id: 'standard',
+        name: 'Standard Business Plan',
+        price: 75000,
+        bestFor: 'Businesses seeking a loan or partnership',
+        features: ['Everything in Lean', 'Full market & competitor analysis', 'Detailed financial projections'],
+        recommended: true,
+      },
+      {
+        id: 'investor-ready',
+        name: 'Investor-Ready Plan + Financial Model',
+        price: 150000,
+        bestFor: 'Founders raising investment who need a rigorous financial model',
+        features: ['Everything in Standard', 'Investor-ready formatting & design', 'Detailed financial model (3–5 years)'],
+      },
+    ],
   },
   {
     id: 'dm-management',
@@ -702,6 +906,35 @@ export const BUSINESS_SERVICES: BusinessService[] = [
     priceMax: 120000,
     period: 'monthly',
     deliverables: ['Content calendar & posting', 'Ad campaign management', 'Monthly performance report'],
+    longDescription:
+      'Ongoing, hands-on management of your social media and paid ad campaigns, so your brand shows up consistently without you having to manage it yourself.',
+    packages: [
+      {
+        id: 'starter',
+        name: 'Starter (1 platform)',
+        price: 40000,
+        priceLabel: '₦40,000/month',
+        bestFor: 'Businesses just starting to build a social presence',
+        features: ['Content calendar for 1 platform', 'Regular posting & community replies', 'Monthly performance report'],
+      },
+      {
+        id: 'growth',
+        name: 'Growth (2–3 platforms + ads)',
+        price: 80000,
+        priceLabel: '₦80,000/month',
+        bestFor: 'Businesses ready to run paid ad campaigns',
+        features: ['Content calendar for 2–3 platforms', 'Meta/Google ad campaign management', 'Monthly performance report'],
+        recommended: true,
+      },
+      {
+        id: 'full-management',
+        name: 'Full Management + Ads Oversight',
+        price: 120000,
+        priceLabel: '₦120,000/month',
+        bestFor: 'Businesses that want marketing fully handled end to end',
+        features: ['Content calendar across all platforms', 'Full ad campaign management & optimisation', 'Bi-weekly strategy check-ins'],
+      },
+    ],
   },
 ];
 

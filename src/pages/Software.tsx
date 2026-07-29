@@ -32,7 +32,7 @@ export default function Software() {
         description="We design, build and maintain web platforms, mobile apps and internal business systems — engineered for reliability at scale."
       />
 
-      <section className="py-20 md:py-24">
+      <section className="py-14 sm:py-20 md:py-24">
         <div className="container-page">
           <SectionHeading eyebrow="What we build" title="Capabilities" />
           <div className="mt-10 grid sm:grid-cols-2 gap-6">
@@ -51,7 +51,7 @@ export default function Software() {
         </div>
       </section>
 
-      <section className="py-20 md:py-24 bg-mist">
+      <section className="py-14 sm:py-20 md:py-24 bg-mist">
         <div className="container-page">
           <SectionHeading eyebrow="How we work" title="A predictable process, from discovery to support" />
           <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -66,7 +66,7 @@ export default function Software() {
         </div>
       </section>
 
-      <section className="py-20 md:py-24">
+      <section className="py-14 sm:py-20 md:py-24">
         <div className="container-page rounded-3xl bg-ink text-white p-10 md:p-14 flex flex-col lg:flex-row items-center justify-between gap-8">
           <div>
             <h2 className="text-2xl md:text-3xl font-bold max-w-md">Have a project in mind?</h2>

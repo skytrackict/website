@@ -1,12 +1,21 @@
+import { Link } from 'react-router-dom';
 import { EnrollButton } from './EnrollButton';
+import { Icon } from './Icon';
 import type { WorkspacePlan, BusinessService } from '../types';
 
 function naira(n: number) {
   return `₦${n.toLocaleString('en-NG')}`;
 }
 
+/** Extracts the first number from a price string like "₦2,000" or "₦60,000 – ₦80,000". */
+function firstAmount(price: string): number {
+  const match = price.match(/[\d,]+/);
+  if (!match) return 5000;
+  return parseInt(match[0].replace(/,/g, ''), 10) || 5000;
+}
+
 export function WorkspacePlanRow({ plan }: { plan: WorkspacePlan }) {
-  const amount = parseInt(plan.price.replace(/[^\d]/g, '')) || 5000;
+  const amount = firstAmount(plan.price);
   return (
     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 py-4 px-5 rounded-xl border border-line bg-white">
       <div>
@@ -31,9 +40,11 @@ export function WorkspacePlanRow({ plan }: { plan: WorkspacePlan }) {
 }
 
 export function BusinessServiceRow({ service }: { service: BusinessService }) {
-  const midAmount = Math.round((service.priceMin + service.priceMax) / 2 / 500) * 500;
   return (
-    <div className="py-5 px-5 rounded-xl border border-line bg-white">
+    <Link
+      to={`/business-solutions/${service.id}`}
+      className="block py-5 px-5 rounded-xl border border-line bg-white hover:shadow-card transition-shadow"
+    >
       <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
         <div>
           <p className="font-semibold text-ink">{service.name}</p>
@@ -46,19 +57,18 @@ export function BusinessServiceRow({ service }: { service: BusinessService }) {
             ))}
           </ul>
         </div>
-        <div className="flex sm:flex-col items-center sm:items-end gap-3 sm:gap-2 shrink-0">
+        <div className="flex flex-col items-start sm:items-end gap-2 shrink-0">
           <span className="font-display font-bold text-ink whitespace-nowrap">
             {naira(service.priceMin)}–{naira(service.priceMax)}
             {service.period && <span className="text-xs font-normal text-slate"> /{service.period}</span>}
           </span>
-          <EnrollButton
-            item={{ id: service.id, kind: 'business-service', name: service.name, amount: midAmount, description: service.summary }}
-            label="Get Started"
-            size="sm"
-          />
+          <span className="inline-flex items-center gap-1.5 text-sm font-semibold px-4 py-2 rounded-full bg-amber text-ink">
+            View Packages
+            <Icon name="arrow-right" size={14} />
+          </span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 

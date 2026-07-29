@@ -93,8 +93,8 @@ export function EnrollModal({ item, onClose }: { item: Sellable; onClose: () => 
       aria-label={`Enrol for ${item.name}`}
     >
       <div className="relative w-full sm:max-w-md bg-white rounded-t-3xl sm:rounded-3xl shadow-card-hover max-h-[92svh] overflow-y-auto">
-        <div className="sticky top-0 bg-white flex items-start justify-between p-6 pb-4 border-b border-line">
-          <div>
+        <div className="sticky top-0 bg-white flex items-start justify-between gap-3 p-5 sm:p-6 pb-4 border-b border-line">
+          <div className="min-w-0 flex-1">
             <p className="text-xs font-semibold uppercase tracking-wide text-signal">
               {stage === 'success' ? 'Booking confirmed' : 'Enrol / Book Now'}
             </p>
@@ -111,7 +111,7 @@ export function EnrollModal({ item, onClose }: { item: Sellable; onClose: () => 
           </button>
         </div>
 
-        <div className="p-6">
+        <div className="p-5 sm:p-6">
           {stage === 'success' ? (
             <div className="text-center py-4">
               <div className="w-14 h-14 mx-auto rounded-full bg-success/10 text-success flex items-center justify-center">

@@ -25,11 +25,11 @@ export default function Training() {
         description="Instructor-led classes built around real test formats and real job requirements — in person or online."
       />
 
-      <section className="py-16 md:py-20">
+      <section className="py-12 sm:py-16 md:py-20">
         <div className="container-page">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <SectionHeading eyebrow="Our programmes" title="Choose a course to get started" />
-            <div className="flex items-center gap-2 p-1 rounded-full bg-mist border border-line">
+            <div className="flex items-center gap-1.5 sm:gap-2 p-1 rounded-full bg-mist border border-line overflow-x-auto max-w-full">
               {[
                 { id: 'all' as const, label: 'All' },
                 { id: 'exam-prep' as const, label: 'Exam Prep' },
@@ -38,7 +38,7 @@ export default function Training() {
                 <button
                   key={f.id}
                   onClick={() => setFilter(f.id)}
-                  className={`px-4 py-2 rounded-full text-sm font-semibold transition-colors ${
+                  className={`shrink-0 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-colors ${
                     filter === f.id ? 'bg-ink text-white' : 'text-slate hover:text-ink'
                   }`}
                 >
@@ -56,7 +56,7 @@ export default function Training() {
         </div>
       </section>
 
-      <section className="py-16 md:py-20 bg-mist">
+      <section className="py-12 sm:py-16 md:py-20 bg-mist">
         <div className="container-page max-w-3xl">
           <SectionHeading eyebrow="Common questions" title="Training FAQs" />
           <div className="mt-10">

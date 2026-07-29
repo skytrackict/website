@@ -35,7 +35,7 @@ export default function CourseDetail() {
 
       {/* Hero */}
       <section className="bg-ink text-white">
-        <div className="container-page py-14 md:py-18">
+        <div className="container-page py-10 sm:py-14 md:py-18">
           <Link to="/training" className="inline-flex items-center gap-1.5 text-sm text-white/60 hover:text-white">
             <Icon name="arrow-right" size={14} className="rotate-180" />
             Back to Training &amp; ICT Academy
@@ -50,7 +50,7 @@ export default function CourseDetail() {
             </span>
           </div>
 
-          <h1 className="mt-4 text-[2rem] md:text-[2.7rem] font-bold leading-[1.1] max-w-2xl">{course.name}</h1>
+          <h1 className="mt-4 text-[1.7rem] sm:text-[2rem] md:text-[2.7rem] font-bold leading-[1.18] sm:leading-[1.1] max-w-2xl">{course.name}</h1>
           <p className="mt-4 text-white/70 max-w-xl leading-relaxed">{course.longDescription}</p>
 
           <div className="mt-8 flex flex-wrap gap-3">
@@ -64,7 +64,7 @@ export default function CourseDetail() {
         </div>
       </section>
 
-      <section className="py-16 md:py-20">
+      <section className="py-12 sm:py-16 md:py-20">
         <div className="container-page grid lg:grid-cols-[1.4fr_1fr] gap-12">
           <div>
             {/* Key facts */}
@@ -239,7 +239,7 @@ export default function CourseDetail() {
       </section>
 
       {related.length > 0 && (
-        <section className="py-16 md:py-20 bg-mist">
+        <section className="py-12 sm:py-16 md:py-20 bg-mist">
           <div className="container-page">
             <SectionHeading eyebrow="Related" title="You might also like" />
             <div className="mt-8 grid sm:grid-cols-3 gap-5">

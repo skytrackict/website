@@ -10,7 +10,7 @@ export function CtaSection() {
             'radial-gradient(circle at 20% 30%, rgba(46,107,255,0.5), transparent 45%), radial-gradient(circle at 85% 70%, rgba(255,176,32,0.35), transparent 40%)',
         }}
       />
-      <div className="container-page relative py-16 md:py-20 text-center">
+      <div className="container-page relative py-12 sm:py-16 md:py-20 text-center">
         <h2 className="text-white text-[1.8rem] md:text-[2.3rem] font-bold max-w-2xl mx-auto leading-tight">
           Ready to get started with SkyTrack ICT?
         </h2>

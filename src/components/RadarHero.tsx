@@ -34,7 +34,7 @@ export function RadarHero() {
             <span className="radar-ping absolute w-3 h-3 rounded-full bg-amber" style={{ animationDelay: b.delay }} />
             <span className="relative w-2.5 h-2.5 rounded-full bg-amber" />
           </span>
-          <span className="absolute left-1/2 -translate-x-1/2 mt-2 whitespace-nowrap text-[0.7rem] font-medium bg-white text-ink px-2.5 py-1 rounded-full shadow-card border border-line">
+          <span className="hidden sm:block absolute left-1/2 -translate-x-1/2 mt-2 whitespace-nowrap text-[0.7rem] font-medium bg-white text-ink px-2.5 py-1 rounded-full shadow-card border border-line">
             {b.label}
           </span>
         </div>

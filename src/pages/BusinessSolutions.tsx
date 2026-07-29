@@ -18,7 +18,7 @@ export default function BusinessSolutions() {
         description="Everything a founder needs to get properly set up — registration, identity, an online presence, and a plan to grow — handled by one team."
       />
 
-      <section className="py-20 md:py-24">
+      <section className="py-14 sm:py-20 md:py-24">
         <div className="container-page">
           <SectionHeading eyebrow="Our services" title="Choose what you need" />
           <div className="mt-10 space-y-3 max-w-3xl">
@@ -29,7 +29,7 @@ export default function BusinessSolutions() {
         </div>
       </section>
 
-      <section className="py-20 md:py-24 bg-mist">
+      <section className="py-14 sm:py-20 md:py-24 bg-mist">
         <div className="container-page">
           <SectionHeading
             eyebrow="Bundle & save"

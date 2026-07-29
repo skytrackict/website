@@ -1,9 +1,14 @@
 import { Seo } from '../components/Seo';
 import { PageHeader, SectionHeading } from '../components/Section';
 import { Icon } from '../components/Icon';
+import { Button } from '../components/Button';
 import { CtaSection } from '../components/CtaSection';
 import { WorkspacePlanRow } from '../components/PricingRows';
-import { WORKSPACE_PLANS } from '../data/content';
+import { WORKSPACE_PLANS, PRIVATE_OFFICE_RENTAL } from '../data/content';
+
+function naira(n: number) {
+  return `₦${n.toLocaleString('en-NG')}`;
+}
 
 const amenities = [
   { icon: 'wifi' as const, label: 'High-speed internet' },
@@ -14,8 +19,8 @@ const amenities = [
 
 export default function Workspace() {
   const coworking = WORKSPACE_PLANS.filter((p) => p.group === 'coworking');
-  const offices = WORKSPACE_PLANS.filter((p) => p.group === 'private-office');
   const conference = WORKSPACE_PLANS.filter((p) => p.group === 'conference');
+  const minOfficePrice = Math.min(...PRIVATE_OFFICE_RENTAL.packages.map((p) => p.price));
 
   return (
     <>
@@ -30,20 +35,20 @@ export default function Workspace() {
         description="Flexible space for focused work and events — booked by the day, week or month, with reliable power and internet included."
       />
 
-      <section className="py-16 md:py-20">
+      <section className="py-8 sm:py-12 md:py-16">
         <div className="container-page">
-          <div className="grid sm:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-6">
             {amenities.map((a) => (
-              <div key={a.label} className="flex items-center gap-3 p-4 rounded-xl bg-mist">
+              <div key={a.label} className="flex items-center gap-2.5 sm:gap-3 p-3.5 sm:p-4 rounded-xl bg-mist">
                 <Icon name={a.icon} size={18} className="text-signal shrink-0" />
-                <span className="text-sm font-medium text-ink">{a.label}</span>
+                <span className="text-xs sm:text-sm font-medium text-ink">{a.label}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-14">
+      <section className="py-8 sm:py-10 md:py-14">
         <div className="container-page">
           <SectionHeading eyebrow="Co-working desks" title="Daily, weekly & monthly plans" />
           <div className="mt-8 space-y-3 max-w-2xl">
@@ -54,18 +59,25 @@ export default function Workspace() {
         </div>
       </section>
 
-      <section className="py-14 bg-mist">
+      <section className="py-8 sm:py-10 md:py-14 bg-mist">
         <div className="container-page">
           <SectionHeading eyebrow="Private offices" title="Dedicated space for your team" />
-          <div className="mt-8 space-y-3 max-w-2xl">
-            {offices.map((p) => (
-              <WorkspacePlanRow key={p.id} plan={p} />
-            ))}
+          <div className="mt-8 max-w-2xl p-5 sm:p-6 rounded-2xl border border-line bg-white flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-5">
+            <div>
+              <p className="font-bold text-ink">Small, medium & large offices</p>
+              <p className="text-sm text-slate mt-1.5">
+                Lockable private offices for teams of 1–6, with high-speed internet and backup power included.
+              </p>
+              <p className="mt-2 font-display font-bold text-ink">From {naira(minOfficePrice)}</p>
+            </div>
+            <Button to="/workspace/private-offices" className="w-full sm:w-auto justify-center">
+              View Prices &amp; Book
+            </Button>
           </div>
         </div>
       </section>
 
-      <section className="py-14">
+      <section className="py-8 sm:py-10 md:py-14">
         <div className="container-page">
           <SectionHeading eyebrow="Conference & training halls" title="For meetings, workshops and events" />
           <div className="mt-8 space-y-3 max-w-2xl">

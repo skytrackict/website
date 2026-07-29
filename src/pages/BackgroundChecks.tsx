@@ -26,7 +26,7 @@ export default function BackgroundChecks() {
         description="Comprehensive background checks for employers and institutions who need to hire and admit with confidence."
       />
 
-      <section className="py-20 md:py-24">
+      <section className="py-14 sm:py-20 md:py-24">
         <div className="container-page">
           <SectionHeading eyebrow="What we verify" title="Our checks" />
           <div className="mt-10 grid sm:grid-cols-2 gap-6">

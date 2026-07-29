@@ -20,7 +20,7 @@ export default function About() {
         description="We started as a computer-based testing provider and grew into a full centre for training, software, workspace and business support — built on the same standard of accuracy in everything we do."
       />
 
-      <section className="py-20 md:py-24">
+      <section className="py-14 sm:py-20 md:py-24">
         <div className="container-page grid lg:grid-cols-2 gap-14">
           <div>
             <SectionHeading eyebrow="Our story" title="From a testing centre to a full innovation hub" />
@@ -70,7 +70,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="py-20 md:py-24 bg-mist">
+      <section className="py-14 sm:py-20 md:py-24 bg-mist">
         <div className="container-page">
           <SectionHeading eyebrow="Management team" title="The people behind SkyTrack ICT" align="center" />
           <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">

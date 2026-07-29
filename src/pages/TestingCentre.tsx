@@ -43,7 +43,7 @@ export default function TestingCentre() {
         description="We prepare you for these exams through structured classes and mock tests. Registration and sitting the exam itself happens through each certification body's official platform, at an accredited testing centre."
       />
 
-      <section className="py-20 md:py-24">
+      <section className="py-14 sm:py-20 md:py-24">
         <div className="container-page">
           <SectionHeading eyebrow="Exams we prepare you for" title="International certification exams" />
           <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -55,11 +55,11 @@ export default function TestingCentre() {
                   to={`/training/${courseId}`}
                   className="flex items-center justify-between gap-3 p-5 rounded-xl border border-line bg-white hover:shadow-card transition-shadow"
                 >
-                  <div>
+                  <div className="min-w-0">
                     <p className="font-bold text-ink">{e.name}</p>
                     <p className="text-xs text-slate mt-0.5">{e.desc}</p>
                   </div>
-                  <span className="inline-flex items-center gap-1.5 text-sm font-semibold px-4 py-2 rounded-full border border-line text-ink">
+                  <span className="shrink-0 inline-flex items-center gap-1.5 text-sm font-semibold px-4 py-2 rounded-full border border-line text-ink">
                     View Class
                     <Icon name="arrow-right" size={14} />
                   </span>
@@ -77,7 +77,7 @@ export default function TestingCentre() {
         </div>
       </section>
 
-      <section className="py-20 md:py-24 bg-mist">
+      <section className="py-14 sm:py-20 md:py-24 bg-mist">
         <div className="container-page">
           <SectionHeading eyebrow="How it works" title="From class enrolment to exam day" />
           <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -92,7 +92,7 @@ export default function TestingCentre() {
         </div>
       </section>
 
-      <section className="py-20 md:py-24">
+      <section className="py-14 sm:py-20 md:py-24">
         <div className="container-page">
           <SectionHeading
             eyebrow="For exam bodies & partners"

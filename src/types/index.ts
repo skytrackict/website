@@ -12,6 +12,7 @@ export interface CoursePackage {
   id: string;
   name: string;
   price: number;
+  priceLabel?: string;
   bestFor: string;
   features: string[];
   recommended?: boolean;
@@ -70,6 +71,8 @@ export interface BusinessService {
   priceMax: number;
   period?: string;
   deliverables: string[];
+  longDescription: string;
+  packages: CoursePackage[];
 }
 
 export interface FacilityBenefit {

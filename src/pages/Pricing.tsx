@@ -4,7 +4,7 @@ import { CtaSection } from '../components/CtaSection';
 import { Button } from '../components/Button';
 import { Link } from 'react-router-dom';
 import { WorkspacePlanRow, BusinessServiceRow } from '../components/PricingRows';
-import { COURSES, WORKSPACE_PLANS, BUSINESS_SERVICES, FACILITY_RENTAL } from '../data/content';
+import { COURSES, WORKSPACE_PLANS, BUSINESS_SERVICES, FACILITY_RENTAL, PRIVATE_OFFICE_RENTAL } from '../data/content';
 import { EnrollButton } from '../components/EnrollButton';
 
 function naira(n: number) {
@@ -15,7 +15,6 @@ export default function Pricing() {
   const examCourses = COURSES.filter((c) => c.category === 'exam-prep');
   const ictCourses = COURSES.filter((c) => c.category === 'ict-skills');
   const coworking = WORKSPACE_PLANS.filter((p) => p.group === 'coworking');
-  const offices = WORKSPACE_PLANS.filter((p) => p.group === 'private-office');
   const conference = WORKSPACE_PLANS.filter((p) => p.group === 'conference');
 
   return (
@@ -85,10 +84,15 @@ export default function Pricing() {
       <section className="py-16 bg-mist">
         <div className="container-page">
           <SectionHeading eyebrow="Workspace" title="Private office prices" />
-          <div className="mt-8 space-y-3 max-w-2xl">
-            {offices.map((p) => (
-              <WorkspacePlanRow key={p.id} plan={p} />
-            ))}
+          <div className="mt-8 max-w-2xl p-6 rounded-2xl border border-line bg-white flex flex-col sm:flex-row sm:items-center justify-between gap-5">
+            <div>
+              <p className="font-bold text-ink">Small, medium & large offices</p>
+              <p className="text-sm text-slate mt-1.5">Lockable private offices for teams of 1–6.</p>
+              <p className="mt-2 font-display font-bold text-ink">
+                From {naira(Math.min(...PRIVATE_OFFICE_RENTAL.packages.map((p) => p.price)))}
+              </p>
+            </div>
+            <Button to="/workspace/private-offices">View Prices &amp; Book</Button>
           </div>
         </div>
       </section>

@@ -9,6 +9,7 @@ import {
   WORKSPACE_PLANS,
   BUSINESS_SERVICES,
   FACILITY_RENTAL,
+  PRIVATE_OFFICE_RENTAL,
 } from '../data/content';
 import type { Sellable } from '../types';
 
@@ -45,13 +46,23 @@ export default function Enroll() {
         id: 'workspace',
         label: 'Workspace & Conference',
         icon: 'building',
-        items: WORKSPACE_PLANS.map((p) => ({
-          id: p.id,
-          kind: 'workspace',
-          name: p.name,
-          amount: parseInt(p.price.replace(/[^\d]/g, '')) || 5000,
-          description: p.period,
-        })),
+        items: [
+          ...WORKSPACE_PLANS.map((p) => ({
+            id: p.id,
+            kind: 'workspace' as const,
+            name: p.name,
+            amount: parseInt((p.price.match(/[\d,]+/)?.[0] ?? '5000').replace(/,/g, ''), 10) || 5000,
+            description: p.period,
+          })),
+          {
+            id: 'private-offices',
+            kind: 'workspace' as const,
+            name: PRIVATE_OFFICE_RENTAL.title,
+            amount: Math.min(...PRIVATE_OFFICE_RENTAL.packages.map((pkg) => pkg.price)),
+            description: 'Small, medium & large offices for teams of 1–6',
+            href: '/workspace/private-offices',
+          },
+        ],
       },
       {
         id: 'business',
@@ -61,8 +72,9 @@ export default function Enroll() {
           id: s.id,
           kind: 'business-service',
           name: s.name,
-          amount: Math.round((s.priceMin + s.priceMax) / 2 / 500) * 500,
+          amount: Math.min(...s.packages.map((p) => p.price)),
           description: s.summary,
+          href: `/business-solutions/${s.id}`,
         })),
       },
       {
@@ -135,13 +147,13 @@ export default function Enroll() {
                   <Link
                     key={item.id}
                     to={item.href}
-                    className="flex items-center justify-between gap-4 p-5 rounded-xl border border-line bg-white hover:shadow-card transition-shadow"
+                    className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 p-4 sm:p-5 rounded-xl border border-line bg-white hover:shadow-card transition-shadow"
                   >
-                    <div>
+                    <div className="min-w-0">
                       <p className="font-semibold text-ink">{item.name}</p>
                       <p className="text-sm text-slate mt-0.5">{item.description}</p>
                     </div>
-                    <div className="flex items-center gap-2 shrink-0">
+                    <div className="flex items-center justify-between sm:justify-end gap-2 shrink-0">
                       <span className="font-display font-bold text-signal whitespace-nowrap">From {naira(item.amount)}</span>
                       <Icon name="arrow-right" size={16} className="text-slate" />
                     </div>
@@ -149,13 +161,13 @@ export default function Enroll() {
                 ) : (
                   <div
                     key={item.id}
-                    className="flex items-center justify-between gap-4 p-5 rounded-xl border border-line bg-white"
+                    className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 p-4 sm:p-5 rounded-xl border border-line bg-white"
                   >
-                    <div>
+                    <div className="min-w-0">
                       <p className="font-semibold text-ink">{item.name}</p>
                       <p className="text-sm text-slate mt-0.5">{item.description}</p>
                     </div>
-                    <div className="flex items-center gap-4 shrink-0">
+                    <div className="flex items-center justify-between sm:justify-end gap-3 sm:gap-4 shrink-0">
                       <span className="font-display font-bold text-ink whitespace-nowrap">{naira(item.amount)}</span>
                       <EnrollButton item={item} label="Enrol" size="sm" />
                     </div>

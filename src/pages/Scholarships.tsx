@@ -25,7 +25,7 @@ export default function Scholarships() {
         description="We identify, prepare and support promising students for local and international scholarship opportunities."
       />
 
-      <section className="py-20 md:py-24">
+      <section className="py-14 sm:py-20 md:py-24">
         <div className="container-page">
           <SectionHeading eyebrow="How we help" title="Support through the whole process" />
           <div className="mt-10 grid sm:grid-cols-2 gap-6">

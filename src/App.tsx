@@ -10,7 +10,9 @@ import TestingCentre from './pages/TestingCentre';
 import FacilityRentalDetail from './pages/FacilityRentalDetail';
 import Software from './pages/Software';
 import Workspace from './pages/Workspace';
+import PrivateOfficeDetail from './pages/PrivateOfficeDetail';
 import BusinessSolutions from './pages/BusinessSolutions';
+import BusinessServiceDetail from './pages/BusinessServiceDetail';
 import BackgroundChecks from './pages/BackgroundChecks';
 import Recruitment from './pages/Recruitment';
 import Scholarships from './pages/Scholarships';
@@ -35,7 +37,9 @@ function App() {
           <Route path="testing-centre/rent-facility" element={<FacilityRentalDetail />} />
           <Route path="software" element={<Software />} />
           <Route path="workspace" element={<Workspace />} />
+          <Route path="workspace/private-offices" element={<PrivateOfficeDetail />} />
           <Route path="business-solutions" element={<BusinessSolutions />} />
+          <Route path="business-solutions/:serviceId" element={<BusinessServiceDetail />} />
           <Route path="background-checks" element={<BackgroundChecks />} />
           <Route path="recruitment" element={<Recruitment />} />
           <Route path="scholarships" element={<Scholarships />} />
