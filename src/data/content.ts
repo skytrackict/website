@@ -12,12 +12,12 @@ import type {
 
 export const SITE = {
   name: 'SkyTrack ICT',
-  legalName: 'Skytrack ICT Solutions',
+  legalName: 'Skytrack ICT Centre',
   tagline: 'Testing, Training & Technology Solutions — Verified, Trackable, Trusted',
-  phone: '+234 814 182 3724',
-  whatsapp: '+2348141823724',
+  phone: '+234 903 001 1970',
+  whatsapp: '+2349030011970',
   email: 'info@skytrackict.com.ng',
-  address: 'Skytrack ICT Hub, Abeokuta, Ogun State, Nigeria',
+  address: '44/45 Onitsha-Enugu Expressway, Aroma Junction, 420110, Awka, Anambra state',
   hours: 'Mon – Sat, 8:00am – 6:00pm',
   social: {
     twitter: 'https://twitter.com/skytrackict',
