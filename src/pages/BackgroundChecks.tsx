@@ -1,16 +1,13 @@
+import { Link } from 'react-router-dom';
 import { Seo } from '../components/Seo';
 import { PageHeader, SectionHeading } from '../components/Section';
 import { Icon } from '../components/Icon';
 import { CtaSection } from '../components/CtaSection';
-import { EnrollButton } from '../components/EnrollButton';
+import { BACKGROUND_CHECKS } from '../data/content';
 
-const checks = [
-  { icon: 'award' as const, title: 'Academic verification', body: 'Confirm degrees, transcripts and certificates, including international credentials.' },
-  { icon: 'shield-check' as const, title: 'NYSC validation', body: 'Verify NYSC discharge or exemption certificates directly with the scheme.' },
-  { icon: 'briefcase' as const, title: 'Employment history', body: 'Confirm past roles, dates of employment and reasons for leaving with former employers.' },
-  { icon: 'map-pin' as const, title: 'Address verification', body: 'Physical confirmation of a candidate\u2019s stated residential or business address.' },
-  { icon: 'users' as const, title: 'Guarantor checks', body: 'Verify guarantor identity, address and willingness to stand for the candidate.' },
-];
+function naira(n: number) {
+  return `₦${n.toLocaleString('en-NG')}`;
+}
 
 export default function BackgroundChecks() {
   return (
@@ -28,30 +25,32 @@ export default function BackgroundChecks() {
 
       <section className="py-14 sm:py-20 md:py-24">
         <div className="container-page">
-          <SectionHeading eyebrow="What we verify" title="Our checks" />
+          <SectionHeading eyebrow="What we verify" title="Our checks" description="View each check for full details, turnaround times and pricing." />
           <div className="mt-10 grid sm:grid-cols-2 gap-6">
-            {checks.map((c) => (
-              <div key={c.title} className="flex gap-4 p-6 rounded-2xl border border-line bg-white">
+            {BACKGROUND_CHECKS.map((c) => (
+              <Link
+                key={c.id}
+                to={`/background-checks/${c.id}`}
+                className="flex flex-col sm:flex-row gap-4 p-6 rounded-2xl border border-line bg-white hover:shadow-card-hover transition-shadow"
+              >
                 <span className="w-11 h-11 rounded-xl bg-signal/10 text-signal flex items-center justify-center shrink-0">
-                  <Icon name={c.icon} size={20} />
+                  <Icon name={c.icon as import('../components/Icon').IconName} size={20} />
                 </span>
-                <div>
-                  <h3 className="font-bold text-ink">{c.title}</h3>
-                  <p className="mt-1.5 text-sm text-slate leading-relaxed">{c.body}</p>
+                <div className="min-w-0 flex-1">
+                  <h3 className="font-bold text-ink">{c.name}</h3>
+                  <p className="mt-1.5 text-sm text-slate leading-relaxed">{c.summary}</p>
+                  <div className="mt-3 flex items-center justify-between gap-3">
+                    <span className="text-sm font-semibold text-signal">
+                      From {naira(Math.min(...c.packages.map((p) => p.price)))}
+                    </span>
+                    <span className="inline-flex items-center gap-1 text-sm font-semibold text-ink">
+                      View prices
+                      <Icon name="arrow-right" size={14} />
+                    </span>
+                  </div>
                 </div>
-              </div>
+              </Link>
             ))}
-          </div>
-
-          <div className="mt-10 p-6 rounded-2xl bg-mist flex flex-col sm:flex-row sm:items-center justify-between gap-4 max-w-2xl">
-            <div>
-              <p className="font-bold text-ink">Standard background check package</p>
-              <p className="text-sm text-slate mt-1">Covers one candidate across the checks selected at intake.</p>
-            </div>
-            <EnrollButton
-              item={{ id: 'bg-check-standard', kind: 'business-service', name: 'Background Check Package', amount: 25000, description: 'Per candidate, scope confirmed at intake' }}
-              label="Request a Check"
-            />
           </div>
         </div>
       </section>

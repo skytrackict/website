@@ -5,6 +5,7 @@ import type {
   WorkspacePlan,
   BusinessService,
   FacilityBenefit,
+  BackgroundCheckItem,
   TeamMember,
   Testimonial,
   FaqItem,
@@ -12,12 +13,12 @@ import type {
 
 export const SITE = {
   name: 'SkyTrack ICT',
-  legalName: 'Skytrack ICT Centre',
+  legalName: 'Skytrack ICT Solutions',
   tagline: 'Testing, Training & Technology Solutions — Verified, Trackable, Trusted',
   phone: '+234 903 001 1970',
   whatsapp: '+2349030011970',
   email: 'info@skytrackict.com.ng',
-  address: '44/45 Onitsha-Enugu Expressway, Aroma Junction, 420110, Awka, Anambra state',
+  address: '44/45 Onitsha-Enugu Expressway, Aroma Junction, 420110, Awka, Anambra State',
   hours: 'Mon – Sat, 8:00am – 6:00pm',
   social: {
     twitter: 'https://twitter.com/skytrackict',
@@ -1000,6 +1001,170 @@ export const EXAM_TO_COURSE_ID: Record<string, string> = {
   GRE: 'gre',
   GMAT: 'gmat',
 };
+
+export const BACKGROUND_CHECKS: BackgroundCheckItem[] = [
+  {
+    id: 'academic-verification',
+    name: 'Academic Verification',
+    icon: 'award',
+    summary: 'Confirm degrees, transcripts and certificates, including international credentials.',
+    longDescription:
+      'We verify academic qualifications directly with the issuing institution — confirming the degree or certificate awarded, dates of attendance, class of grade, and certificate authenticity — for both Nigerian and international institutions.',
+    turnaround: '3–14 business days, depending on the institution',
+    whatWeCheck: [
+      'Institution name & accreditation',
+      'Degree or certificate awarded',
+      'Dates of attendance',
+      'Class of degree / grade',
+      'Certificate authenticity',
+    ],
+    packages: [
+      {
+        id: 'domestic',
+        name: 'Domestic Institution',
+        price: 8000,
+        bestFor: 'Nigerian universities, polytechnics and colleges',
+        features: ['Direct verification with the institution', 'Certificate authenticity check', '3–7 business day turnaround'],
+      },
+      {
+        id: 'international',
+        name: 'International Institution',
+        price: 20000,
+        bestFor: 'Universities and colleges outside Nigeria',
+        features: ['Direct verification with the institution', 'Certificate authenticity check', '7–14 business day turnaround'],
+        recommended: true,
+      },
+    ],
+  },
+  {
+    id: 'nysc-validation',
+    name: 'NYSC Validation',
+    icon: 'shield-check',
+    summary: 'Verify NYSC discharge or exemption certificates directly with the scheme.',
+    longDescription:
+      'We confirm the authenticity of a candidate\u2019s NYSC discharge, exemption or exclusion certificate directly with the National Youth Service Corps, so you can be confident it\u2019s genuine before you hire or admit.',
+    turnaround: '1–5 business days',
+    whatWeCheck: [
+      'Certificate number & authenticity',
+      'Call-up number match',
+      'Service year & state of deployment',
+      'Discharge / exemption status',
+    ],
+    packages: [
+      {
+        id: 'standard',
+        name: 'Standard Validation',
+        price: 5000,
+        bestFor: 'A single NYSC certificate check',
+        features: ['Direct verification with NYSC', 'Certificate authenticity confirmation', '3–5 business day turnaround'],
+      },
+      {
+        id: 'express',
+        name: 'Express Validation',
+        price: 8000,
+        bestFor: 'When you need confirmation urgently',
+        features: ['Priority processing', 'Certificate authenticity confirmation', '1–2 business day turnaround'],
+        recommended: true,
+      },
+    ],
+  },
+  {
+    id: 'employment-history',
+    name: 'Employment History',
+    icon: 'briefcase',
+    summary: 'Confirm past roles, dates of employment and reasons for leaving with former employers.',
+    longDescription:
+      'We contact a candidate\u2019s former employers directly to confirm job title, employment dates and reason for leaving — giving you a clear, verified employment record before you extend an offer.',
+    turnaround: '5–10 business days per employer',
+    whatWeCheck: [
+      'Job title & department',
+      'Employment start & end dates',
+      'Reason for leaving',
+      'Eligibility for rehire, where disclosed',
+    ],
+    packages: [
+      {
+        id: 'single',
+        name: 'Single Employer',
+        price: 7000,
+        bestFor: 'Verifying one previous employer',
+        features: ['Direct employer contact', 'Role & dates confirmation', '5–10 business day turnaround'],
+      },
+      {
+        id: 'multiple',
+        name: 'Up to 3 Employers',
+        price: 18000,
+        bestFor: 'A full employment history check',
+        features: ['Direct contact with up to 3 employers', 'Role & dates confirmation for each', 'One consolidated report'],
+        recommended: true,
+      },
+    ],
+  },
+  {
+    id: 'address-verification',
+    name: 'Address Verification',
+    icon: 'map-pin',
+    summary: 'Physical confirmation of a candidate\u2019s stated residential or business address.',
+    longDescription:
+      'Our field team physically visits and confirms a candidate\u2019s stated residential or business address — noting how long they\u2019ve been there and speaking with neighbours or building management where appropriate.',
+    turnaround: '3–7 business days',
+    whatWeCheck: [
+      'Physical confirmation of the address',
+      'Duration at the address',
+      'Neighbour / caretaker confirmation',
+      'Photographic evidence of the location',
+    ],
+    packages: [
+      {
+        id: 'single',
+        name: 'Single Address',
+        price: 6000,
+        bestFor: 'Verifying one residential or business address',
+        features: ['Physical site visit', 'Photographic evidence', '3–7 business day turnaround'],
+      },
+      {
+        id: 'two-addresses',
+        name: 'Two Addresses',
+        price: 10000,
+        bestFor: 'Verifying both a home and business address',
+        features: ['Physical site visit to both addresses', 'Photographic evidence', '3–7 business day turnaround'],
+        recommended: true,
+      },
+    ],
+  },
+  {
+    id: 'guarantor-checks',
+    name: 'Guarantor Checks',
+    icon: 'users',
+    summary: 'Verify guarantor identity, address and willingness to stand for the candidate.',
+    longDescription:
+      'We confirm each guarantor\u2019s identity, address and means of livelihood, and speak with them directly to confirm their relationship with the candidate and willingness to stand as guarantor.',
+    turnaround: '3–7 business days per guarantor',
+    whatWeCheck: [
+      'Identity verification',
+      'Address confirmation',
+      'Employment / means of livelihood',
+      'Confirmed willingness to stand as guarantor',
+    ],
+    packages: [
+      {
+        id: 'single',
+        name: 'Single Guarantor',
+        price: 6000,
+        bestFor: 'Verifying one guarantor',
+        features: ['Identity & address verification', 'Direct guarantor interview', '3–7 business day turnaround'],
+      },
+      {
+        id: 'two-guarantors',
+        name: 'Two Guarantors',
+        price: 11000,
+        bestFor: 'Most standard employment or tenancy requirements',
+        features: ['Identity & address verification for both', 'Direct guarantor interviews', '3–7 business day turnaround'],
+        recommended: true,
+      },
+    ],
+  },
+];
 
 export const TEAM: TeamMember[] = [
   {

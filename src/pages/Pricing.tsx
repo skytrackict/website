@@ -4,7 +4,7 @@ import { CtaSection } from '../components/CtaSection';
 import { Button } from '../components/Button';
 import { Link } from 'react-router-dom';
 import { WorkspacePlanRow, BusinessServiceRow } from '../components/PricingRows';
-import { COURSES, WORKSPACE_PLANS, BUSINESS_SERVICES, FACILITY_RENTAL, PRIVATE_OFFICE_RENTAL } from '../data/content';
+import { COURSES, WORKSPACE_PLANS, BUSINESS_SERVICES, FACILITY_RENTAL, PRIVATE_OFFICE_RENTAL, BACKGROUND_CHECKS } from '../data/content';
 import { EnrollButton } from '../components/EnrollButton';
 
 function naira(n: number) {
@@ -137,16 +137,16 @@ export default function Pricing() {
           <div className="mt-10 p-6 rounded-2xl border border-line max-w-2xl">
             <p className="font-bold text-ink">Background checks & recruitment</p>
             <p className="mt-1.5 text-sm text-slate">
-              Priced per candidate or per role based on scope — request a quote and we'll confirm pricing before you
-              pay.
+              Each background check has its own detail page with turnaround times and pricing. Recruitment is
+              priced per role, based on scope.
             </p>
             <div className="mt-4 flex flex-wrap gap-3">
-              <EnrollButton
-                item={{ id: 'bg-check-standard', kind: 'business-service', name: 'Background Check Package', amount: 25000, description: 'Per candidate' }}
-                label="Background Check — from ₦25,000"
-                size="sm"
-                variant="ghost"
-              />
+              <Link
+                to="/background-checks"
+                className="inline-flex items-center gap-1.5 text-sm font-semibold px-4 py-2 rounded-full border border-line text-ink hover:bg-mist transition-colors"
+              >
+                Background Checks — from {naira(Math.min(...BACKGROUND_CHECKS.flatMap((c) => c.packages.map((p) => p.price))))}
+              </Link>
               <EnrollButton
                 item={{ id: 'recruitment-single-role', kind: 'business-service', name: 'Single-Role Recruitment Package', amount: 75000, description: 'Per role' }}
                 label="Recruitment — from ₦75,000"

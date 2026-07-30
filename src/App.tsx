@@ -14,6 +14,7 @@ import PrivateOfficeDetail from './pages/PrivateOfficeDetail';
 import BusinessSolutions from './pages/BusinessSolutions';
 import BusinessServiceDetail from './pages/BusinessServiceDetail';
 import BackgroundChecks from './pages/BackgroundChecks';
+import BackgroundCheckDetail from './pages/BackgroundCheckDetail';
 import Recruitment from './pages/Recruitment';
 import Scholarships from './pages/Scholarships';
 import Pricing from './pages/Pricing';
@@ -41,6 +42,7 @@ function App() {
           <Route path="business-solutions" element={<BusinessSolutions />} />
           <Route path="business-solutions/:serviceId" element={<BusinessServiceDetail />} />
           <Route path="background-checks" element={<BackgroundChecks />} />
+          <Route path="background-checks/:checkId" element={<BackgroundCheckDetail />} />
           <Route path="recruitment" element={<Recruitment />} />
           <Route path="scholarships" element={<Scholarships />} />
           <Route path="pricing" element={<Pricing />} />

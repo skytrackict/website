@@ -81,6 +81,17 @@ export interface FacilityBenefit {
   body: string;
 }
 
+export interface BackgroundCheckItem {
+  id: string;
+  name: string;
+  icon: string;
+  summary: string;
+  longDescription: string;
+  turnaround: string;
+  whatWeCheck: string[];
+  packages: CoursePackage[];
+}
+
 export interface TeamMember {
   id: string;
   name: string;
