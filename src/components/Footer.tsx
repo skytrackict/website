@@ -78,6 +78,10 @@ export function Footer() {
               <Icon name="map-pin" size={16} className="mt-0.5 shrink-0 text-signal-light" />
               {SITE.address}
             </li>
+            <li className="flex items-start gap-2.5">
+              <Icon name="map-pin" size={16} className="mt-0.5 shrink-0 text-signal-light" />
+              {SITE.address2}
+            </li>
             <li className="flex items-center gap-2.5">
               <Icon name="phone" size={16} className="shrink-0 text-signal-light" />
               <a href={`tel:${SITE.phone.replace(/\s/g, '')}`} className="hover:text-white">

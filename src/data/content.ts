@@ -18,7 +18,8 @@ export const SITE = {
   phone: '+234 903 001 1970',
   whatsapp: '+2349030011970',
   email: 'info@skytrackict.com.ng',
-  address: '44/45 Onitsha-Enugu Expressway, Aroma Junction, 420110, Awka, Anambra State',
+  address: 'Address 1: 44/45 Onitsha-Enugu Expressway, Aroma Junction, 420110, Awka, Anambra State',
+  address2: 'Address 2: No. 3BD 167 Jedidiah Estate, Enugu State, Nigeria',
   hours: 'Mon – Sat, 8:00am – 6:00pm',
   social: {
     twitter: 'https://twitter.com/skytrackict',
