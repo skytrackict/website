@@ -248,7 +248,7 @@ export const COURSES: Course[] = [
     name: 'IELTS Preparation',
     summary: 'Full coverage of Listening, Reading, Writing and Speaking with timed mock tests.',
     duration: '4–8 weeks',
-    priceMin: 25000,
+    priceMin: 35000,
     priceMax: 60000,
     format: 'In-person or online, weekday & weekend cohorts',
     outcomes: ['Band-score focused strategy', 'Weekly mock exams', 'One-on-one speaking practice'],
@@ -290,7 +290,7 @@ export const COURSES: Course[] = [
       { icon: 'award', title: 'Certificate of Completion', body: 'A certificate confirming you completed the programme.' },
       { icon: 'clock', title: 'Flexible Scheduling', body: 'Weekday and weekend cohorts to fit your routine.' },
     ],
-    packages: examPackages(25000, 60000),
+    packages: examPackages(35000, 60000),
   },
   {
     id: 'pte',
@@ -298,8 +298,8 @@ export const COURSES: Course[] = [
     name: 'PTE Academic',
     summary: 'Computer-delivered test strategy with AI-scored practice sessions.',
     duration: '3–6 weeks',
-    priceMin: 25000,
-    priceMax: 50000,
+    priceMin: 35000,
+    priceMax: 60000,
     format: 'In-person or online',
     outcomes: ['Item-by-item scoring breakdown', 'Template-based writing drills', 'Full-length simulations'],
     longDescription:
@@ -324,7 +324,7 @@ export const COURSES: Course[] = [
       { icon: 'award', title: 'Certificate of Completion', body: 'A certificate confirming you completed the programme.' },
       { icon: 'clock', title: 'Flexible Scheduling', body: 'Weekday and weekend cohorts to fit your routine.' },
     ],
-    packages: examPackages(25000, 50000),
+    packages: examPackages(35000, 60000),
   },
   {
     id: 'celpip',
@@ -332,8 +332,8 @@ export const COURSES: Course[] = [
     name: 'CELPIP Preparation',
     summary: 'Canada-focused English proficiency training for immigration and work.',
     duration: '3–6 weeks',
-    priceMin: 25000,
-    priceMax: 50000,
+    priceMin: 35000,
+    priceMax: 60000,
     format: 'In-person or online',
     outcomes: ['CLB-aligned scoring guidance', 'Listening & reading strategy', 'Speaking booth practice'],
     longDescription:
@@ -358,7 +358,7 @@ export const COURSES: Course[] = [
       { icon: 'award', title: 'Certificate of Completion', body: 'A certificate confirming you completed the programme.' },
       { icon: 'clock', title: 'Flexible Scheduling', body: 'Weekday and weekend cohorts to fit your routine.' },
     ],
-    packages: examPackages(25000, 50000),
+    packages: examPackages(35000, 60000),
   },
   {
     id: 'toefl',
@@ -366,8 +366,8 @@ export const COURSES: Course[] = [
     name: 'TOEFL iBT',
     summary: 'Academic English preparation for university admission requirements.',
     duration: '4–6 weeks',
-    priceMin: 30000,
-    priceMax: 50000,
+    priceMin: 35000,
+    priceMax: 60000,
     format: 'In-person or online',
     outcomes: ['Integrated skills practice', 'Timed section drills', 'Score-report review'],
     longDescription:
@@ -393,7 +393,7 @@ export const COURSES: Course[] = [
       { icon: 'award', title: 'Certificate of Completion', body: 'A certificate confirming you completed the programme.' },
       { icon: 'clock', title: 'Flexible Scheduling', body: 'Weekday and weekend cohorts to fit your routine.' },
     ],
-    packages: examPackages(30000, 50000),
+    packages: examPackages(35000, 60000),
   },
   {
     id: 'gre',
