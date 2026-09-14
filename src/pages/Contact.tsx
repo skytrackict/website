@@ -171,6 +171,21 @@ export default function Contact() {
             )}
           </div>
         </div>
+
+        <div className="container-page mt-12">
+          <div className="rounded-2xl border border-line overflow-hidden">
+            <iframe
+              title="SkyTrack ICT location"
+              src={`https://www.google.com/maps?q=${encodeURIComponent(SITE.address.replace(/^Address\s*\d+:\s*/i, ''))}&output=embed`}
+              width="100%"
+              height="380"
+              style={{ border: 0 }}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
+          </div>
+        </div>
       </section>
     </>
   );
