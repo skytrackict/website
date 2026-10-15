@@ -4,6 +4,7 @@ import { PageHeader, SectionHeading } from '../components/Section';
 import { Icon } from '../components/Icon';
 import { Button } from '../components/Button';
 import { CtaSection } from '../components/CtaSection';
+import { AccreditationSection } from '../components/Accreditations';
 import { EXAM_TO_COURSE_ID, FACILITY_RENTAL } from '../data/content';
 
 function naira(n: number) {
@@ -43,6 +44,8 @@ export default function TestingCentre() {
         description="We prepare you for these exams through structured classes and mock tests. Registration and sitting the exam itself happens through each certification body's official platform, at an accredited testing centre."
       />
 
+      <AccreditationSection className="bg-mist" />
+
       <section className="py-14 sm:py-20 md:py-24">
         <div className="container-page">
           <SectionHeading eyebrow="Exams we prepare you for" title="International certification exams" />
@@ -71,8 +74,8 @@ export default function TestingCentre() {
             <Icon name="shield-check" size={15} className="mt-0.5 shrink-0 text-signal" />
             SkyTrack ICT provides classes and mock exams to prepare you for each of these tests. We don't register
             you for the exam itself — you book your official exam date directly with the certification body, and
-            sit it at an accredited testing centre (which may or may not be SkyTrack ICT, depending on your
-            location).
+            sit it at an accredited testing centre. As an accredited PeopleCert and approved Pearson VUE test
+            centre, SkyTrack ICT can host exams delivered through those networks.
           </p>
         </div>
       </section>

@@ -6,6 +6,7 @@ import { SectionHeading, StatBlock } from '../components/Section';
 import { Testimonials } from '../components/Testimonials';
 import { CtaSection } from '../components/CtaSection';
 import { Icon } from '../components/Icon';
+import { AccreditationStrip } from '../components/Accreditations';
 import { DIVISIONS, SPECIALIST_SERVICES } from '../data/content';
 
 const stats = [
@@ -85,6 +86,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <AccreditationStrip />
 
       {/* Divisions */}
       <section className="py-14 sm:py-20 md:py-28">

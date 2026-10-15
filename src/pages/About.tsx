@@ -2,6 +2,7 @@ import { Seo } from '../components/Seo';
 import { PageHeader, SectionHeading } from '../components/Section';
 import { Icon } from '../components/Icon';
 import { CtaSection } from '../components/CtaSection';
+import { AccreditationSection } from '../components/Accreditations';
 import { StoryIllustration } from '../components/StoryIllustration';
 import { MissionIllustration } from '../components/MissionIllustration';
 import { TEAM } from '../data/content';
@@ -87,6 +88,8 @@ export default function About() {
           </div>
         </div>
       </section>
+
+      <AccreditationSection />
 
       <CtaSection />
     </>
