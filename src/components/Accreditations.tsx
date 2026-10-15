@@ -12,27 +12,36 @@ const ACCREDITATIONS = [
   {
     name: 'PeopleCert',
     logo: peoplecertLogo,
-    body: 'Accredited PeopleCert examination centre for globally recognised certifications.',
+    title: 'PeopleCert Accredited Examination Centre',
+    body: 'Globally recognised PeopleCert certification exams — such as ITIL®, PRINCE2® and LanguageCert — delivered on-site under strict invigilation.',
   },
   {
     name: 'Pearson VUE',
     logo: pearsonLogo,
-    body: 'Approved Pearson VUE test centre for computer-based professional and certification exams.',
+    title: 'Pearson VUE Authorised Test Centre',
+    body: 'Computer-based professional and certification exams delivered through the Pearson VUE network, on-site under full proctoring.',
   },
 ];
 
-/** Compact logo strip, e.g. under the home page hero. */
+const HEADLINE = 'PeopleCert & Pearson Approved Test Centre';
+
+/** Compact accreditation banner, e.g. under the home page hero. */
 export function AccreditationStrip({ className }: { className?: string }) {
   return (
-    <section className={clsx('py-10 border-b border-line', className)}>
-      <div className="container-page flex flex-col md:flex-row md:items-center gap-6 md:gap-12">
-        <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate shrink-0 flex items-center gap-2">
-          <Icon name="award" size={15} className="text-signal" />
-          Accredited & approved by
-        </p>
-        <div className="flex flex-wrap items-center gap-x-12 gap-y-6">
+    <section className={clsx('py-8 sm:py-10 border-b border-line', className)}>
+      <div className="container-page flex flex-col md:flex-row md:items-center justify-between gap-6 md:gap-10">
+        <div className="flex items-center gap-3">
+          <span className="w-10 h-10 shrink-0 rounded-xl bg-signal/10 text-signal flex items-center justify-center">
+            <Icon name="award" size={18} />
+          </span>
+          <div>
+            <p className="font-display font-bold text-ink leading-tight">{HEADLINE}</p>
+            <p className="text-sm text-slate mt-0.5">Sit your certification exam with us, on-site.</p>
+          </div>
+        </div>
+        <div className="flex flex-wrap items-center gap-x-10 gap-y-5">
           {ACCREDITATIONS.map((a) => (
-            <img key={a.name} src={a.logo} alt={`${a.name} logo`} className="h-9 sm:h-10 w-auto" loading="lazy" />
+            <img key={a.name} src={a.logo} alt={`${a.name} logo`} className="h-8 sm:h-9 w-auto" loading="lazy" />
           ))}
         </div>
       </div>
@@ -47,20 +56,23 @@ export function AccreditationSection({ className }: { className?: string }) {
       <div className="container-page grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
         <div>
           <SectionHeading
-            eyebrow="Accredited test centre"
-            title="Accredited by PeopleCert and approved by Pearson VUE"
-            description="SkyTrack ICT is an officially accredited PeopleCert examination centre and an approved Pearson VUE test centre — so candidates can sit their exams with us in a secure, invigilated, computer-based environment."
+            eyebrow="Accreditations"
+            title={HEADLINE}
+            description="SkyTrack ICT is accredited by PeopleCert and approved by Pearson VUE to deliver their international examinations — so you can sit your exam with us in a secure, invigilated, computer-based environment."
           />
-          <div className="mt-8 grid sm:grid-cols-2 gap-4">
-            {ACCREDITATIONS.map((a) => (
-              <div key={a.name} className="p-5 rounded-2xl border border-line bg-white">
-                <div className="h-12 flex items-center">
-                  <img src={a.logo} alt={`${a.name} logo`} className="max-h-10 w-auto" loading="lazy" />
-                </div>
-                <p className="mt-4 text-sm text-slate leading-relaxed">{a.body}</p>
-              </div>
+          <ol className="mt-8 border-t border-line">
+            {ACCREDITATIONS.map((a, i) => (
+              <li key={a.name} className="py-6 border-b border-line">
+                <span className="font-mono text-xs text-slate">{String(i + 1).padStart(2, '0')}</span>
+                <img src={a.logo} alt={`${a.name} logo`} className="mt-3 h-9 w-auto" loading="lazy" />
+                <h3 className="mt-4 font-bold text-ink">{a.title}</h3>
+                <p className="mt-1.5 text-sm text-slate leading-relaxed">{a.body}</p>
+              </li>
             ))}
-          </div>
+          </ol>
+          <p className="mt-4 text-xs text-slate/80">
+            PeopleCert, ITIL® and PRINCE2® are trademarks of PeopleCert. Pearson VUE is a trademark of Pearson plc.
+          </p>
         </div>
 
         <div className="grid grid-cols-2 gap-3 sm:gap-4">
