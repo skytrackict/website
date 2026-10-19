@@ -7,6 +7,7 @@ import { Testimonials } from '../components/Testimonials';
 import { CtaSection } from '../components/CtaSection';
 import { Icon } from '../components/Icon';
 import { AccreditationStrip } from '../components/Accreditations';
+import { FacilityGallery } from '../components/FacilityGallery';
 import { DIVISIONS, SPECIALIST_SERVICES } from '../data/content';
 
 const stats = [
@@ -139,8 +140,10 @@ export default function Home() {
         </div>
       </section>
 
+      <FacilityGallery className="bg-mist" />
+
       {/* Stats band */}
-      <section className="py-16 border-y border-line bg-mist">
+      <section className="py-16 border-b border-line">
         <div className="container-page grid grid-cols-2 md:grid-cols-4 gap-8">
           <StatBlock value="CBT" label="Computer-based testing centre" />
           <StatBlock value="7+" label="International exams supported" />

@@ -7,6 +7,8 @@ import { EnrollButton } from '../components/EnrollButton';
 import { SectionHeading } from '../components/Section';
 import { CtaSection } from '../components/CtaSection';
 import { FACILITY_RENTAL } from '../data/content';
+import { FACILITY_PHOTOS } from '../data/facility';
+import { FacilityGallery } from '../components/FacilityGallery';
 
 function naira(n: number) {
   return `₦${n.toLocaleString('en-NG')}`;
@@ -27,27 +29,35 @@ export default function FacilityRentalDetail() {
       />
 
       <section className="bg-ink text-white">
-        <div className="container-page py-10 sm:py-14 md:py-18">
-          <Link to="/testing-centre" className="inline-flex items-center gap-1.5 text-sm text-white/60 hover:text-white">
-            <Icon name="arrow-right" size={14} className="rotate-180" />
-            Back to Testing Centre
-          </Link>
+        <div className="container-page py-10 sm:py-14 md:py-18 grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
+          <div>
+            <Link to="/testing-centre" className="flex w-fit items-center gap-1.5 text-sm text-white/60 hover:text-white">
+              <Icon name="arrow-right" size={14} className="rotate-180" />
+              Back to Testing Centre
+            </Link>
 
-          <span className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wide bg-signal/20 text-signal-light px-3 py-1 rounded-full">
-            For Exam Bodies &amp; Partners
-          </span>
+            <span className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wide bg-signal/20 text-signal-light px-3 py-1 rounded-full">
+              For Exam Bodies &amp; Partners
+            </span>
 
-          <h1 className="mt-4 text-[1.7rem] sm:text-[2rem] md:text-[2.7rem] font-bold leading-[1.18] sm:leading-[1.1] max-w-2xl">{FACILITY_RENTAL.title}</h1>
-          <p className="mt-4 text-white/70 max-w-xl leading-relaxed">{FACILITY_RENTAL.description}</p>
+            <h1 className="mt-4 text-[1.7rem] sm:text-[2rem] md:text-[2.7rem] font-bold leading-[1.18] sm:leading-[1.1] max-w-2xl">{FACILITY_RENTAL.title}</h1>
+            <p className="mt-4 text-white/70 max-w-xl leading-relaxed">{FACILITY_RENTAL.description}</p>
 
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Button href="#packages" size="lg">
-              View Packages &amp; Request
-            </Button>
-            <Button to="/contact" size="lg" variant="outline-light">
-              Ask a Question
-            </Button>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button href="#packages" size="lg">
+                View Packages &amp; Request
+              </Button>
+              <Button to="/contact" size="lg" variant="outline-light">
+                Ask a Question
+              </Button>
+            </div>
           </div>
+
+          <img
+            src={FACILITY_PHOTOS.cbtCubicles.src}
+            alt={FACILITY_PHOTOS.cbtCubicles.alt}
+            className="w-full aspect-[4/3] object-cover rounded-2xl"
+          />
         </div>
       </section>
 
@@ -162,6 +172,13 @@ export default function FacilityRentalDetail() {
           </div>
         </div>
       </section>
+
+      <FacilityGallery
+        className="bg-mist"
+        eyebrow="Tour the facility"
+        title="A secure, ready-to-use exam venue"
+        description="Private CBT cubicles with headsets and webcams, secure candidate lockers and a dedicated waiting area — all ready for your exam session."
+      />
 
       <CtaSection />
     </>

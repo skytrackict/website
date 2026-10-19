@@ -1,9 +1,7 @@
 import clsx from 'clsx';
 import peoplecertLogo from '../assets/partners/peoplecert-logo.svg';
 import pearsonLogo from '../assets/partners/pearson-logo.svg';
-import cbtLab from '../assets/testing/cbt-lab.jpg';
-import candidate from '../assets/testing/candidate.jpg';
-import workstation from '../assets/testing/workstation.jpg';
+import { FACILITY_PHOTOS } from '../data/facility';
 import { SectionHeading } from './Section';
 import { Icon } from './Icon';
 
@@ -76,24 +74,15 @@ export function AccreditationSection({ className }: { className?: string }) {
         </div>
 
         <div className="grid grid-cols-2 gap-3 sm:gap-4">
-          <img
-            src={cbtLab}
-            alt="Candidates sitting computer-based exams in a testing lab"
-            className="col-span-2 w-full aspect-[16/9] object-cover rounded-2xl"
-            loading="lazy"
-          />
-          <img
-            src={candidate}
-            alt="Candidate taking an exam at a workstation"
-            className="w-full aspect-[4/3] object-cover rounded-2xl"
-            loading="lazy"
-          />
-          <img
-            src={workstation}
-            alt="Candidates working at computer-based testing stations"
-            className="w-full aspect-[4/3] object-cover rounded-2xl"
-            loading="lazy"
-          />
+          {[FACILITY_PHOTOS.cbtCubicles, FACILITY_PHOTOS.lockerLounge, FACILITY_PHOTOS.waitingArea].map((p, i) => (
+            <img
+              key={p.title}
+              src={p.src}
+              alt={p.alt}
+              className={i === 0 ? 'col-span-2 w-full aspect-[16/9] object-cover rounded-2xl' : 'w-full aspect-[4/3] object-cover rounded-2xl'}
+              loading="lazy"
+            />
+          ))}
         </div>
       </div>
     </section>

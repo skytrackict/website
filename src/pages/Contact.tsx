@@ -4,6 +4,7 @@ import { PageHeader } from '../components/Section';
 import { Icon } from '../components/Icon';
 import { Button } from '../components/Button';
 import { SITE } from '../data/content';
+import { FACILITY_PHOTOS } from '../data/facility';
 import { recordContactMessage } from '../lib/submissions';
 
 export default function Contact() {
@@ -83,6 +84,19 @@ export default function Contact() {
               <Icon name="whatsapp" size={20} />
               Chat with us on WhatsApp
             </a>
+
+            <figure className="mt-5 overflow-hidden rounded-xl border border-line">
+              <img
+                src={FACILITY_PHOTOS.buildingExterior.src}
+                alt={FACILITY_PHOTOS.buildingExterior.alt}
+                className="w-full aspect-[4/3] object-cover"
+                loading="lazy"
+              />
+              <figcaption className="px-5 py-3.5 text-sm text-slate flex items-center gap-2">
+                <Icon name="map-pin" size={15} className="text-signal shrink-0" />
+                Visiting our Awka centre? Look for the SkyTrack ICT banner at Aroma Junction.
+              </figcaption>
+            </figure>
           </div>
 
           <div className="p-6 md:p-8 rounded-2xl border border-line bg-white">
