@@ -84,9 +84,16 @@ export function Footer() {
             </li>
             <li className="flex items-center gap-2.5">
               <Icon name="phone" size={16} className="shrink-0 text-signal-light" />
-              <a href={`tel:${SITE.phone.replace(/\s/g, '')}`} className="hover:text-white">
-                {SITE.phone}
-              </a>
+              <span>
+                {[SITE.phone, SITE.phone2].map((p, i) => (
+                  <span key={p}>
+                    {i > 0 && ', '}
+                    <a href={`tel:${p.replace(/\s/g, '')}`} className="hover:text-white">
+                      {p}
+                    </a>
+                  </span>
+                ))}
+              </span>
             </li>
             <li className="flex items-center gap-2.5">
               <Icon name="mail" size={16} className="shrink-0 text-signal-light" />

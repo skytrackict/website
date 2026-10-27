@@ -52,10 +52,14 @@ export default function Contact() {
           <div>
             <div className="space-y-5">
               {[
-                { icon: 'map-pin' as const, label: 'Address', value: SITE.address },
-                { icon: 'phone' as const, label: 'Phone', value: SITE.phone, href: `tel:${SITE.phone.replace(/\s/g, '')}` },
-                { icon: 'mail' as const, label: 'Email', value: SITE.email, href: `mailto:${SITE.email}` },
-                { icon: 'clock' as const, label: 'Hours', value: SITE.hours },
+                { icon: 'map-pin' as const, label: 'Address', lines: [{ value: SITE.address }] },
+                {
+                  icon: 'phone' as const,
+                  label: 'Phone',
+                  lines: [SITE.phone, SITE.phone2].map((p) => ({ value: p, href: `tel:${p.replace(/\s/g, '')}` })),
+                },
+                { icon: 'mail' as const, label: 'Email', lines: [{ value: SITE.email, href: `mailto:${SITE.email}` }] },
+                { icon: 'clock' as const, label: 'Hours', lines: [{ value: SITE.hours }] },
               ].map((item) => (
                 <div key={item.label} className="flex items-start gap-4 p-5 rounded-xl border border-line bg-white">
                   <span className="w-10 h-10 rounded-lg bg-signal/10 text-signal flex items-center justify-center shrink-0">
@@ -63,12 +67,16 @@ export default function Contact() {
                   </span>
                   <div className="min-w-0">
                     <p className="text-xs font-semibold uppercase tracking-wide text-slate">{item.label}</p>
-                    {item.href ? (
-                      <a href={item.href} className="mt-0.5 block font-medium text-ink hover:text-signal">
-                        {item.value}
-                      </a>
-                    ) : (
-                      <p className="mt-0.5 font-medium text-ink">{item.value}</p>
+                    {item.lines.map((line: { value: string; href?: string }) =>
+                      line.href ? (
+                        <a key={line.value} href={line.href} className="mt-0.5 block font-medium text-ink hover:text-signal">
+                          {line.value}
+                        </a>
+                      ) : (
+                        <p key={line.value} className="mt-0.5 font-medium text-ink">
+                          {line.value}
+                        </p>
+                      ),
                     )}
                   </div>
                 </div>
